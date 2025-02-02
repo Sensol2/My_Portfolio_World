@@ -4,7 +4,7 @@ class Animator {
         this.spriteRenderer = spriteRenderer;
         this.animations = new Map();
         this.currentAnimation = null;
-        this.intervalID = null;
+        this.lastFrameTime = 0;
     }
 
     addAnimation(...animations) {
@@ -18,21 +18,20 @@ class Animator {
     }
 
     setAnimation(key) {
-        console.log("Animation", this.getAnimation(key), "SET")
-        this.currentAnimation = this.getAnimation(key);
+        const newAnimation = this.getAnimation(key);
+        this.currentAnimation = newAnimation;
+        this.spriteRenderer.changeImg(this.currentAnimation.spriteSheet); // 🔥 즉시 반영
     }
 
-    play() {
-        this.spriteRenderer.changeImg(this.currentAnimation.spriteSheet);
-        this.intervalID = setInterval(() => {
+    update(timestamp) {
+        if (!this.currentAnimation) return;
+        const elapsed = timestamp - this.lastFrameTime;
+        if (elapsed >= this.currentAnimation.frameDuration) {
             let { sx, sy, width, height } = this.currentAnimation.getFrame();
             this.spriteRenderer.changeFrame(sx, sy, width, height);
             this.currentAnimation.nextFrame();
-        }, this.currentAnimation.frameDuration);
-    }
-
-    stop() {
-        clearInterval(this.intervalID);
+            this.lastFrameTime = timestamp;
+        }
     }
 }
 

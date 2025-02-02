@@ -14,6 +14,10 @@ class GameObject {
         this.transform = this.addComponent(new Transform(x,y))
     }
 
+    update() {
+        
+    }
+
     addComponent(component) {
         const componentName = component.constructor.name;
         this.components.set(componentName, component);
@@ -30,6 +34,11 @@ class GameObject {
         if (spriteRenderer) {
             spriteRenderer.draw(camera, this.transform.x, this.transform.y);
         }
+    }
+
+    move(x, y) {
+        this.transform.x += x;
+        this.transform.y += y;
     }
 }
 

@@ -1,5 +1,6 @@
 import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import Camera from "/game/core/Camera.js";
+import InputManager from "/game/core/InputManager.js";
 import Renderer from "/game/core/Renderer.js";
 import GameObject from "/game/objects/GameObject.js";
 import Player from "/game/objects/Player.js";
@@ -19,7 +20,8 @@ class GameManager {
 
         container.appendChild(canvas);
 
-        const bg = new GameObject(-550, -300);
+        // BG 추가
+        const bg = new GameObject(0, -30);
         bg.addComponent(new SpriteRenderer("/Assets/Map/Lunadew_Valley.png"));
         this.objects.push(bg);
 
@@ -27,12 +29,22 @@ class GameManager {
         const player = new Player(0, 0);
         this.objects.push(player);
 
-
+        // 인풋매니저 추가
+        this.inputManager = new InputManager(player);
     }
 
-    loop() {
-        Renderer.render(this.camera, this.objects);
-        requestAnimationFrame(() => this.loop());
+    loop(timestamp) {
+        this.camera.clear();
+
+        // 이 부분은 나중에 손보자 코드 더럽다
+        for (const obj of this.objects) {
+            obj.update(timestamp);
+            obj.render(this.camera);
+        }
+
+        // 입력 처리
+        this.inputManager.update();
+        requestAnimationFrame((t) => this.loop(t));
     }
 }
 
