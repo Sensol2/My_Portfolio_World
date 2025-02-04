@@ -1,8 +1,7 @@
 import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import Camera from "/game/core/Camera.js";
 import InputManager from "/game/core/InputManager.js";
-import Renderer from "/game/core/Renderer.js";
-import GameObject from "/game/objects/GameObject.js";
+import GameObject from "../components/GameObject.js";
 import Player from "/game/objects/Player.js";
 
 
@@ -21,7 +20,7 @@ class GameManager {
         container.appendChild(canvas);
 
         // BG 추가
-        const bg = new GameObject(0, -30);
+        const bg = new GameObject(0, 0);
         bg.addComponent(new SpriteRenderer("/Assets/Map/Lunadew_Valley.png"));
         this.objects.push(bg);
 
