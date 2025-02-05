@@ -27,6 +27,7 @@ class GameManager {
         // 플레이어 추가
         const player = new Player(0, 0);
         this.objects.push(player);
+        this.camera.setTarget(player);
 
         // 인풋매니저 추가
         this.inputManager = new InputManager(player);
@@ -40,7 +41,7 @@ class GameManager {
             obj.update(timestamp);
             obj.render(this.camera);
         }
-
+        this.camera.update();
         // 입력 처리
         this.inputManager.update();
         requestAnimationFrame((t) => this.loop(t));

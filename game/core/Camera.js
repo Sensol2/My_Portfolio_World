@@ -10,22 +10,26 @@ const CANVAS_WIDTH = 1024;
 const CANVAS_HEIGHT = 576;
 
 class Camera extends GameObject {
-    constructor(_offsetX=0, _offsetY=0, _scale=5.0) {
-        super(_offsetX, _offsetY);
+    constructor(offsetX=0, offsetY=0, _scale=3) {
+        super(offsetX, offsetY);
         const [canvas, ctx] = this.createCanvas();
         this.canvas = canvas;
         this.ctx = ctx;
-        this.offsetX = _offsetX;
-        this.offsetY = _offsetY;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
         this.scale = _scale;
-        // this.target = null;
+        this.target = null;
     }
 
     update() {
-        // if (target) {
-        //     this.offsetX = target.transform.x;
-        //     this.offsetY = target.transform.y;
-        // }
+        if (this.target) {
+            this.offsetX = (this.target.transform.x - 1024/(2*this.scale));
+            this.offsetY = (this.target.transform.y - 576/(2*this.scale));
+        }
+    }
+
+    setTarget(target) {
+        this.target = target;
     }
 
     // 캔버스와 컨텍스트 초기화
@@ -54,7 +58,7 @@ class Camera extends GameObject {
     displayImage(img, x, y, sx = null, sy = null, sWidth = null, sHeight = null) {
         this.ctx.imageSmoothingEnabled = false;
     
-        // 좌표를 scale에 맞춰 변환 (중요!)
+        // 좌표를 scale에 맞춰 변환
         const drawX = (x - this.offsetX) * this.scale;
         const drawY = (y - this.offsetY) * this.scale;
         const drawWidth = (sWidth ?? img.width) * this.scale;
