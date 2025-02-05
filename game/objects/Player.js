@@ -2,6 +2,7 @@ import GameObject from "../components/GameObject.js";
 import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import Animation from "/game/components/Animation.js";
 import Animator from "/game/components/Animator.js";
+import InputManager from "/game/core/InputManager.js";
 
 // 플레이어 STATE 정의. FSM 패턴 사용
 const PlayerState = Object.freeze({
@@ -20,14 +21,22 @@ class Player extends GameObject {
         this.speed_x = 3;   //플레이어 x 이동속도
         this.speed_y = 3;   //플레이어 y 이동속도
 
+        //이동 관련 함수 정의
+        this.inputManager = InputManager.getInstance();
+        this.inputManager.setCallback("LEFT", () => this.move(-1, 0));
+        this.inputManager.setCallback("RIGHT", () => this.move(1, 0));
+        this.inputManager.setCallback("UP", () => this.move(0, -1));
+        this.inputManager.setCallback("DOWN", () => this.move(0, 1));
+
 
         this.spriteRenderer = this.addComponent(new SpriteRenderer("/Assets/Characters/Human/WALKING/base_walk_LEFT.png"));
         this.animator = this.addComponent(new Animator(this.spriteRenderer));
         this.animator.addAnimation(
             new Animation("WALK_LEFT", "/Assets/Characters/Human/WALKING/base_walk_LEFT.png", 8, 100),
-            new Animation("WALK_RIGHT", "/Assets/Characters/Human/WALKING/base_walk_RIGHT.png", 8, 100)
+            new Animation("WALK_RIGHT", "/Assets/Characters/Human/WALKING/base_walk_RIGHT.png", 8, 100),
+            new Animation("ATTACKING", "/Assets/Characters/Human/ATTACK/base_attack_strip10.png", 10, 100),
         );
-        this.animator.setAnimation("WALK_LEFT");
+        this.animator.setAnimation("ATTACKING");
     }
 
     update(timestamp) {
@@ -55,6 +64,9 @@ class Player extends GameObject {
             case PlayerState.WALKING_RIGHT:
                 this.animator.setAnimation("WALK_RIGHT");
                 break;   
+            case PlayerState.ATTACKING:
+                this.animator.setAnimation("ATTACKING");
+                break;
         }
     }
 

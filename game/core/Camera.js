@@ -1,4 +1,5 @@
 import GameObject from "../components/GameObject.js";
+import InputManager from "/game/core/InputManager.js";
 import elt from "/game/utils/elt.js";
 /* 
 ==== camera.js =====
@@ -10,15 +11,26 @@ const CANVAS_WIDTH = 1024;
 const CANVAS_HEIGHT = 576;
 
 class Camera extends GameObject {
-    constructor(offsetX=0, offsetY=0, _scale=3) {
+    constructor(offsetX=0, offsetY=0, _scale=1) {
         super(offsetX, offsetY);
+
+        // 캔버스 관련
         const [canvas, ctx] = this.createCanvas();
         this.canvas = canvas;
         this.ctx = ctx;
+
+        // 카메라 좌표, 스케일 설정
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.scale = _scale;
+
+        // 타겟 오브젝트 관련
         this.target = null;
+
+        // 줌인/아웃 설정
+        this.inputManager = InputManager.getInstance();
+        this.inputManager.setCallback("WHEEL_UP", () => this.zoomIn());
+        this.inputManager.setCallback("WHEEL_DOWN", () => this.zoomOut());
     }
 
     update() {
@@ -80,6 +92,14 @@ class Camera extends GameObject {
     move(dx, dy) {
         this.offsetX += dx;
         this.offsetY += dy;
+    }
+
+    zoomIn() {
+        this.scale += 0.1;
+    }
+
+    zoomOut() {
+        this.scale -= 0.1;
     }
 }
 

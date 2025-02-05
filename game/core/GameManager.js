@@ -35,13 +35,14 @@ class GameManager {
 
     loop(timestamp) {
         this.camera.clear();
-
+        this.camera.update();
+        
         // 이 부분은 나중에 손보자 코드 더럽다
         for (const obj of this.objects) {
             obj.update(timestamp);
             obj.render(this.camera);
         }
-        this.camera.update();
+
         // 입력 처리
         this.inputManager.update();
         requestAnimationFrame((t) => this.loop(t));
