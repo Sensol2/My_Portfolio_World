@@ -34,9 +34,10 @@ class Camera extends GameObject {
     }
 
     update() {
+        // 화면 중앙에 타겟 고정
         if (this.target) {
-            this.offsetX = (this.target.transform.x - 1024/(2*this.scale));
-            this.offsetY = (this.target.transform.y - 576/(2*this.scale));
+            this.offsetX = (this.target.transform.x - CANVAS_WIDTH/(2*this.scale));
+            this.offsetY = (this.target.transform.y - CANVAS_HEIGHT/(2*this.scale));
         }
     }
 

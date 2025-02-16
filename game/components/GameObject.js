@@ -1,19 +1,25 @@
-import Transform from "/game/components/Transform.js"
-import SpriteRenderer from "/game/components/SpriteRenderer.js"
+import Transform from "/game/components/Transform.js";
+import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import MonoBehaviour from "/game/core/MonoBehaviour.js";
 
 /* 
 ==== gameObject.js =====
 기본적인 게임 오브젝트의 속성을 정의한다.
 나중에는 Player 등 개체가 GameObject를 상속받을 예정
-*/ 
+*/
 
-//가장 기본이 되는 클래스. 이 클래스 아래에 여러 컴포넌트들이 붙을 수 있음..
-class GameObject extends MonoBehaviour{
-    constructor(x,y) {
+class GameObject extends MonoBehaviour {
+    // 피벗 설정 (정적 속성으로 추가)
+    static Pivot = Object.freeze({
+        CENTER: "center",
+        TOP_LEFT: "top-left"
+    });
+
+    constructor(x, y, pivot = GameObject.Pivot.CENTER) {
         super();
         this.components = new Map();
-        this.transform = this.addComponent(new Transform(x,y))
+        this.transform = this.addComponent(new Transform(x, y));
+        this.pivot = pivot; // 피벗 설정
     }
 
     addComponent(component) {
@@ -26,17 +32,32 @@ class GameObject extends MonoBehaviour{
         return this.components.get(componentClass.name);
     }
 
+    update() {
+        return
+    }
+
     render(camera) {
         const spriteRenderer = this.getComponent(SpriteRenderer);
         
         if (spriteRenderer) {
-            // 이미지 중앙을 기준으로 위치 조정 (피벗 중앙)
-            const posX = this.transform.x - (spriteRenderer.sWidth / 2);
-            const posY = this.transform.y - (spriteRenderer.sHeight / 2);
+            let posX = this.transform.x;
+            let posY = this.transform.y;
+
+            // 피벗 옵션에 따라 위치 조정
+            switch (this.pivot) {
+                case GameObject.Pivot.CENTER:
+                    posX -= spriteRenderer.sWidth / 2;
+                    posY -= spriteRenderer.sHeight / 2;
+                    break;
+                case GameObject.Pivot.TOP_LEFT:
+                    // 기본적으로 (x, y) 좌표는 타일의 왼쪽 위 위치이므로 변경 없음
+                    break;
+            }
+
             spriteRenderer.draw(camera, posX, posY);
         }
     }
-    
+
     move(x, y) {
         this.transform.x += x;
         this.transform.y += y;
