@@ -9,17 +9,10 @@ import MonoBehaviour from "/game/core/MonoBehaviour.js";
 */
 
 class GameObject extends MonoBehaviour {
-    // 피벗 설정 (정적 속성으로 추가)
-    static Pivot = Object.freeze({
-        CENTER: "center",
-        TOP_LEFT: "top-left"
-    });
-
-    constructor(x, y, pivot = GameObject.Pivot.CENTER) {
+    constructor(x, y) {
         super();
         this.components = new Map();
         this.transform = this.addComponent(new Transform(x, y));
-        this.pivot = pivot; // 피벗 설정
     }
 
     addComponent(component) {
@@ -44,12 +37,12 @@ class GameObject extends MonoBehaviour {
             let posY = this.transform.y;
 
             // 피벗 옵션에 따라 위치 조정
-            switch (this.pivot) {
-                case GameObject.Pivot.CENTER:
+            switch (this.transform.pivot) {
+                case Transform.Pivot.CENTER:
                     posX -= spriteRenderer.sWidth / 2;
                     posY -= spriteRenderer.sHeight / 2;
                     break;
-                case GameObject.Pivot.TOP_LEFT:
+                case Transform.Pivot.TOP_LEFT:
                     // 기본적으로 (x, y) 좌표는 타일의 왼쪽 위 위치이므로 변경 없음
                     break;
             }

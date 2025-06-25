@@ -3,9 +3,10 @@ import Camera from "/game/core/Camera.js";
 import InputManager from "/game/core/InputManager.js";
 import GameObject from "../components/GameObject.js";
 import Player from "/game/objects/Player.js";
-import generateCollisionMap from "/Data/collisionTileData.js";
+import { generateTileMap, getTileMapSize } from "/Data/collisionTileData.js";
 import Tile from "/game/components/Tile.js";
-
+import { rectangularCollision } from "../components/Collider.js";
+import Rect from "../components/Rect.js";
 
 class GameManager {
     constructor() {
@@ -24,7 +25,7 @@ class GameManager {
 
         // BG 추가
         const bg = new GameObject(0, 0);
-        bg.addComponent(new SpriteRenderer("/Assets/Map/Lunadew_Valley.png"));
+        bg.addComponent(new SpriteRenderer("/Assets/Map/TestBG.png"));
         this.objects.push(bg);
 
         // 플레이어 추가
@@ -33,14 +34,9 @@ class GameManager {
         this.camera.setTarget(player);
 
         // 벽 추가
-        const data = generateCollisionMap(); // 충돌 맵 데이터 가져오기
-        const mapHeight = data.length;       // 세로 타일 개수 (행)
-        const mapWidth = data[0].length;     // 가로 타일 개수 (열)
-        
-        // 맵의 중심 계산 (화면 중앙을 기준으로 배치)
-        const centerX = 25;
-        const centerY = 15;
-        
+        const data = generateTileMap(); // 충돌 맵 데이터 가져오기
+        const [mapHeight, mapWidth] = getTileMapSize();
+
         for (let i = 0; i < mapHeight; i++) {
             for (let j = 0; j < mapWidth; j++) {
                 const tileValue = data[i][j];
@@ -49,16 +45,20 @@ class GameManager {
                 if (tileValue === 0) continue;
         
                 // 중앙 기준으로 타일 위치 조정
+                // 맵의 중심 계산 (화면 중앙을 기준으로 배치)
+                const centerX = mapWidth / 2;
+                const centerY = mapHeight / 2;
                 const tileX = (j - centerX) * 16;
                 const tileY = (i - centerY) * 16;
         
                 // 타일 객체 생성 후 배열에 추가
                 const tile = new Tile(tileX, tileY, 16, 16, tileValue);
+
                 this.tiles.push(tile);
             }
         }
-
-
+        player.setTiles(this.tiles); // 타일 배열 주입
+        console.log(this.tiles)
 
         // 인풋매니저 추가
         this.inputManager = new InputManager(player);
@@ -68,14 +68,22 @@ class GameManager {
         this.camera.clear();
         this.camera.update();
         
-        // 이 부분은 나중에 손보자 코드 더럽다
+        // TODO: 이 부분은 나중에 손보자 코드 더럽다
         for (let obj of this.objects) {
             obj.update(timestamp);
             obj.render(this.camera);
+            // 플레이어의 충돌 박스 시각화
+            if (obj.rect) {
+                this.camera.drawCollisionBox(obj.rect, "red");
+            }
         }
 
         for (let tile of this.tiles) {
             tile.render(this.camera);
+            // 벽 타일만 파란색 박스 시각화
+            if (tile.tileCode === "WALL" && tile.rect) {
+                this.camera.drawCollisionBox(tile.rect, "blue");
+            }
         }
 
         // 입력 처리
