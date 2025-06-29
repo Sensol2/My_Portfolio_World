@@ -1,6 +1,4 @@
-import Rect from "/game/components/Rect.js";
-
-/** @type { {rect1: Rect, rect2: Rect} } */
+/** @type { {rect1: Collider, rect2: Collider} } */
 export function rectangularCollision({ rect1, rect2 }) {
   return (
     rect1.x + rect1.width >= rect2.x &&
@@ -10,5 +8,15 @@ export function rectangularCollision({ rect1, rect2 }) {
   );
 }
 
+class Collider {
+    constructor(x, y, width, height) {
+        this.x = x;         // 중심 x
+        this.y = y;         // 중심 y
+        this.width = width;
+        this.height = height;
+    }
+}
 
+
+export default Collider;
 

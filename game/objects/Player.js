@@ -3,7 +3,7 @@ import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import Animation from "/game/components/Animation.js";
 import Animator from "/game/components/Animator.js";
 import InputManager from "/game/core/InputManager.js";
-import Rect from "/game/components/Rect.js";
+import Collider from "/game/components/Collider.js";
 import { rectangularCollision } from "/game/components/Collider.js";
 
 // 플레이어 STATE 정의. FSM 패턴 사용
@@ -41,7 +41,7 @@ class Player extends GameObject {
         this.animator.setAnimation("ATTACKING");
 
         this.offset = {offX: -5, offY: -8};
-        this.rect = this.addComponent(new Rect(x, y, 10, 14))
+        this.rect = this.addComponent(new Collider(x, y, 10, 14))
         this.updateBound();
 
     }
@@ -77,15 +77,19 @@ class Player extends GameObject {
         }
     }
 
-    // 별로 마음에는 안 들지만, GameManager에서 타일 배열을 주입받기 위해서
+    // TODO : 별로 마음에는 안 들지만, GameManager에서 타일 배열을 주입받기 위해서
     setTiles(tiles) {
         this.tiles = tiles;
     }
 
     updateBound() {
-        // Rect의 x, y 좌표를 중심 좌표로 설정
+        // Collider의 x, y 좌표를 중심 좌표로 설정
         this.rect.x = this.transform.x + this.offset.offX;
         this.rect.y = this.transform.y + this.offset.offY;
+    }
+
+    drawDebug(camera) {
+        if (this.rect) camera.drawCollisionBox(this.rect, "red");
     }
 
     //메소드 오버라이딩
@@ -107,10 +111,8 @@ class Player extends GameObject {
         // 충돌 체크
         if (this.tiles) {
             for (const tile of this.tiles) {
-                //console.log(tile)
                 if (tile.tileCode === "WALL") {
                     if (rectangularCollision({ rect1: this.rect, rect2: tile.rect })) {
-                        // console.log("Collision detected with tile:". tile);
                         //충돌 시 이동 취소
                         this.transform.x = prevX;
                         this.transform.y = prevY;

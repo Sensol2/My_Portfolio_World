@@ -51,6 +51,10 @@ class GameObject extends MonoBehaviour {
         }
     }
 
+    drawDebug(camera) { 
+        return;
+    }
+
     move(x, y) {
         this.transform.x += x;
         this.transform.y += y;

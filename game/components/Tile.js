@@ -1,4 +1,4 @@
-import Rect from "/game/components/Rect.js";
+import Collider from "/game/components/Collider.js";
 import GameObject from "/game/components/GameObject.js";
 import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import Transform from "/game/components/Transform.js";
@@ -17,8 +17,8 @@ class Tile extends GameObject{
         //this.isMoveable = true;
         // tileCode는 getTileCode 메서드를 사용해 설정
         this.tileCode = this.getTileCode(code);
-        this.spriteRenderer = this.addComponent(new SpriteRenderer("/Assets/Tiles/wall-tile.png"));
-        this.rect = this.addComponent(new Rect(x, y, tileWidth, tileHeight));
+        //this.spriteRenderer = this.addComponent(new SpriteRenderer("/Assets/Tiles/wall-tile.png"));
+        this.rect = this.addComponent(new Collider(x, y, tileWidth, tileHeight));
     }
 
     // tileCode 값을 code에 맞게 반환하는 메서드
@@ -33,6 +33,11 @@ class Tile extends GameObject{
         }
     }
 
+    drawDebug(camera) {
+        if (this.tileCode === "WALL" && this.rect) {
+            camera.drawCollisionBox(this.rect, "blue");
+        }
+    }
 }
 
 export default Tile;

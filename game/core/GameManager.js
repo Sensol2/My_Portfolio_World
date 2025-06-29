@@ -1,18 +1,13 @@
-import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import Camera from "/game/core/Camera.js";
 import InputManager from "/game/core/InputManager.js";
-import GameObject from "../components/GameObject.js";
-import Player from "/game/objects/Player.js";
-import { generateTileMap, getTileMapSize } from "/Data/collisionTileData.js";
-import Tile from "/game/components/Tile.js";
-import { rectangularCollision } from "../components/Collider.js";
-import Rect from "../components/Rect.js";
+import SceneManager from "/game/core/SceneManager.js";
+import Scene1 from "/game/scenes/Scene1.js";
+
 
 class GameManager {
     constructor() {
         this.camera = new Camera();
-        this.objects = [];
-        this.tiles = [];
+        this.inputManager = InputManager.getInstance(); // 싱글턴으로 한 번만
     }
 
     init() {
@@ -23,70 +18,17 @@ class GameManager {
 
         container.appendChild(canvas);
 
-        // BG 추가
-        const bg = new GameObject(0, 0);
-        bg.addComponent(new SpriteRenderer("/Assets/Map/TestBG.png"));
-        this.objects.push(bg);
-
-        // 플레이어 추가
-        const player = new Player(0, 0);
-        this.objects.push(player);
-        this.camera.setTarget(player);
-
-        // 벽 추가
-        const data = generateTileMap(); // 충돌 맵 데이터 가져오기
-        const [mapHeight, mapWidth] = getTileMapSize();
-
-        for (let i = 0; i < mapHeight; i++) {
-            for (let j = 0; j < mapWidth; j++) {
-                const tileValue = data[i][j];
-        
-                // 타일이 비어있으면 추가하지 않음 (예: 0인 경우 무시 가능)
-                if (tileValue === 0) continue;
-        
-                // 중앙 기준으로 타일 위치 조정
-                // 맵의 중심 계산 (화면 중앙을 기준으로 배치)
-                const centerX = mapWidth / 2;
-                const centerY = mapHeight / 2;
-                const tileX = (j - centerX) * 16;
-                const tileY = (i - centerY) * 16;
-        
-                // 타일 객체 생성 후 배열에 추가
-                const tile = new Tile(tileX, tileY, 16, 16, tileValue);
-
-                this.tiles.push(tile);
-            }
-        }
-        player.setTiles(this.tiles); // 타일 배열 주입
-        console.log(this.tiles)
-
-        // 인풋매니저 추가
-        this.inputManager = new InputManager(player);
+        // 최초 씬 설정
+        const gameScene = new Scene1(this.camera);
+        SceneManager.changeScene(gameScene);
     }
 
     loop(timestamp) {
         this.camera.clear();
         this.camera.update();
         
-        // TODO: 이 부분은 나중에 손보자 코드 더럽다
-        for (let obj of this.objects) {
-            obj.update(timestamp);
-            obj.render(this.camera);
-            // 플레이어의 충돌 박스 시각화
-            if (obj.rect) {
-                this.camera.drawCollisionBox(obj.rect, "red");
-            }
-        }
-
-        for (let tile of this.tiles) {
-            tile.render(this.camera);
-            // 벽 타일만 파란색 박스 시각화
-            if (tile.tileCode === "WALL" && tile.rect) {
-                this.camera.drawCollisionBox(tile.rect, "blue");
-            }
-        }
-
-        // 입력 처리
+        SceneManager.update(timestamp);
+        SceneManager.render(this.camera);
         this.inputManager.update();
         requestAnimationFrame((t) => this.loop(t));
     }
