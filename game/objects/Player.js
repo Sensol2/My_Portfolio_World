@@ -121,11 +121,14 @@ class Player extends GameObject {
                         break;
                     }
                 }
+                if (tile.tileCode === "EVENT") {
+                    if (rectangularCollision({ rect1: this.rect, rect2: tile.rect })) {
+                        tile.triggerEnter();
+                    }
+                }
             }
         }
     }
-
-
 }
 
 export default Player;

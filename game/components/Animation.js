@@ -22,7 +22,7 @@ class Animation {
         let sy = 0;
         return {sx, sy, width: this.fWidth, height: this.fHeight};
     }
-
+    
     nextFrame() {
         this.currentFrame += 1
         if (this.currentFrame >= this.frameCnt) this.currentFrame = this.currentFrame % this.frameCnt;
