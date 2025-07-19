@@ -9,6 +9,11 @@ class Transform {
         this.y = y;
         this.pivot = pivot; // 피벗 설정
     }
+
+    setTransform(x, y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 
 export default Transform;

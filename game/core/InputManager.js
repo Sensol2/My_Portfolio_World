@@ -6,27 +6,25 @@ class InputManager extends MonoBehaviour {
     constructor() {
         super();
 
+        // 인풋매니저는 싱글턴으로 관리
         if (InputManager.instance) {
-            return InputManager.instance; // 이미 인스턴스가 있으면 기존 인스턴스를 반환
+            return InputManager.instance;
         }
 
-        InputManager.instance = this; // 싱글턴 인스턴스 저장
+        InputManager.instance = this;
 
-        this.keyPressed = new Set(); // 현재 눌려 있는 키를 저장
-        this.keyMap = {
-            "ArrowLeft": "LEFT",
-            "ArrowRight": "RIGHT",
-            "ArrowUp": "UP",
-            "ArrowDown": "DOWN"
-        };
+        this.keyPressed = new Set();
 
+        // 방향키 눌릴때 실행할 함수 매핑
+        // KEY_UP: 어떤 키든 KeyUp 이벤트 발생 시 실행, 플레이어 정지 상태 판정을 위해 사용
         this.callbacks = {
-            "LEFT": null,
-            "RIGHT": null,
-            "UP": null,
-            "DOWN": null,
+            "KEY_UP": null,
+            "ArrowLeft": null,
+            "ArrowRight": null,
+            "ArrowUp": null,
+            "ArrowDown": null,
             "WHEEL_UP": null,
-            "WHEEL_DOWN": null
+            "WHEEL_DOWN": null,
         };
 
         window.addEventListener("keydown", (event) => this.onKeyDown(event));
@@ -48,23 +46,21 @@ class InputManager extends MonoBehaviour {
     }
 
     update() {
+        // 방향키 눌려있는 동안
         this.keyPressed.forEach((key) => {
             if (this.callbacks[key]) {
-                this.callbacks[key](); // 등록된 콜백 함수 실행
+                this.callbacks[key](); // 계속 등록된 콜백 함수 실행
             }
         });
     }
 
     onKeyDown(event) {
-        if (this.keyMap[event.key]) {
-            this.keyPressed.add(this.keyMap[event.key]);
-        }
+        this.keyPressed.add(event.key);
     }
 
     onKeyUp(event) {
-        if (this.keyMap[event.key]) {
-            this.keyPressed.delete(this.keyMap[event.key]);
-        }
+        this.keyPressed.delete(event.key);
+        this.callbacks["KEY_UP"]();
     }
 
     onWheel(event) {

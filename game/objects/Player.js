@@ -8,7 +8,8 @@ import { rectangularCollision } from "/game/components/Collider.js";
 
 // 플레이어 STATE 정의. FSM 패턴 사용
 const PlayerState = Object.freeze({
-    IDLE: "IDLE",
+    IDLE_LEFT: "IDLE_LEFT",
+    IDLE_RIGHT: "IDLE_RIGHT",
     WALKING_LEFT: "WALKING_LEFT",
     WALKING_RIGHT: "WALKING_RIGHT",
     ATTACKING: "ATTACKING",
@@ -19,28 +20,32 @@ class Player extends GameObject {
     constructor(x, y) {
         super(x, y);
         this.playerState = PlayerState.IDLE;
-        
         this.speed_x = 1;   //플레이어 x 이동속도
         this.speed_y = 1;   //플레이어 y 이동속도
         
         //이동 관련 함수 정의
         this.inputManager = InputManager.getInstance();
-        this.inputManager.setCallback("LEFT", () => this.move(-1, 0));
-        this.inputManager.setCallback("RIGHT", () => this.move(1, 0));
-        this.inputManager.setCallback("UP", () => this.move(0, -1));
-        this.inputManager.setCallback("DOWN", () => this.move(0, 1));
+        this.inputManager.setCallback("ArrowLeft", () => this.move(-1, 0));
+        this.inputManager.setCallback("ArrowRight", () => this.move(1, 0));
+        this.inputManager.setCallback("ArrowUp", () => this.move(0, -1));
+        this.inputManager.setCallback("ArrowDown", () => this.move(0, 1));
+        this.inputManager.setCallback("KEY_UP", () => { this.stop(); });
 
         //그래픽 관련 컴포넌트 정의
         this.spriteRenderer = this.addComponent(new SpriteRenderer("/Assets/Characters/Human/WALKING/base_walk_LEFT.png"));
         this.animator = this.addComponent(new Animator(this.spriteRenderer));
         this.animator.addAnimation(
+            new Animation("IDLE_LEFT", "/Assets/Characters/Human/IDLE/base_idle_LEFT.png", 9, 100),
+            new Animation("IDLE_RIGHT", "/Assets/Characters/Human/IDLE/base_idle_RIGHT.png", 9, 100),
             new Animation("WALK_LEFT", "/Assets/Characters/Human/WALKING/base_walk_LEFT.png", 8, 100),
             new Animation("WALK_RIGHT", "/Assets/Characters/Human/WALKING/base_walk_RIGHT.png", 8, 100),
             new Animation("ATTACKING", "/Assets/Characters/Human/ATTACK/base_attack_strip10.png", 10, 100),
         );
-        this.animator.setAnimation("ATTACKING");
+        this.animator.setAnimation("IDLE_RIGHT");
 
         this.offset = {offX: -5, offY: -8};
+
+        this.tiles = [];
         this.rect = this.addComponent(new Collider(x, y, 10, 14))
         this.updateBound();
 
@@ -62,8 +67,11 @@ class Player extends GameObject {
 
     updateAnimation() {
         switch(this.playerState) {
-            case PlayerState.IDLE:
-                this.animator.setAnimation("WALK_LEFT"); // 나중에 IDLE로 바꾸기
+            case PlayerState.IDLE_LEFT:
+                this.animator.setAnimation("IDLE_LEFT");
+                break;
+            case PlayerState.IDLE_RIGHT:
+                this.animator.setAnimation("IDLE_RIGHT");
                 break;
             case PlayerState.WALKING_LEFT:
                 this.animator.setAnimation("WALK_LEFT");
@@ -78,8 +86,8 @@ class Player extends GameObject {
     }
 
     // TODO : 별로 마음에는 안 들지만, GameManager에서 타일 배열을 주입받기 위해서
-    setTiles(tiles) {
-        this.tiles = tiles;
+    addTiles(tiles) {
+        this.tiles = [...this.tiles, ...tiles];
     }
 
     updateBound() {
@@ -109,6 +117,7 @@ class Player extends GameObject {
         this.updateBound();
 
         // 충돌 체크
+        // TODO: 타일 배열을 Player 외부에서 관리하게 만들기
         if (this.tiles) {
             for (const tile of this.tiles) {
                 if (tile.tileCode === "WALL") {
@@ -127,6 +136,15 @@ class Player extends GameObject {
                     }
                 }
             }
+        }
+    }
+
+    stop() {
+        if (this.playerState === PlayerState.WALKING_LEFT) {
+            this.changeState(PlayerState.IDLE_LEFT);
+        }
+        else if (this.playerState === PlayerState.WALKING_RIGHT) {
+            this.changeState(PlayerState.IDLE_RIGHT);
         }
     }
 }

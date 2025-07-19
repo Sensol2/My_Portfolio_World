@@ -25,7 +25,7 @@
             "scaleInEditor": 1
         },
         "26_Condominium.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 0.5,
             "scaleInEditor": 3
         },
         "2_LivingRoom.tsx": {
@@ -74,14 +74,14 @@
         },
         "Lunadew_Valley.tmx": {
             "scale": 1.5,
-            "selectedLayer": 10,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 1117.3333333333333,
-                "y": 1000
+                "x": 1100.6666666666665,
+                "y": 1003.3333333333333
             }
         },
         "Museum.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 3,
             "scaleInEditor": 1
         },
         "Room_Builder.tsx": {

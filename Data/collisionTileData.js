@@ -12,21 +12,18 @@ export function sliceTileMap(tileData, height, width) {
     return tileMap;
 } 
 
-export async function getWallData() {
+export async function getTilemapData(type) {
     const jsonData = await getJSONData();
-    const layer_collision = jsonData.layers.find(layer => layer.name === "Collision");
-    const dataArray = sliceTileMap(layer_collision.data, layer_collision.height, layer_collision.width);
-
-    return [dataArray, layer_collision.height, layer_collision.width];
-} 
-
-export async function getEventData() {
-    const jsonData = await getJSONData();
-    const layer_event = jsonData.layers.find(layer => layer.name === "Event");
-    const dataArray = sliceTileMap(layer_event.data, layer_event.height, layer_event.width);
-
-    return [dataArray, layer_event.height, layer_event.width];
-} 
+    const layer_collision = jsonData.layers.find(layer => layer.name === type);
+    if (layer_collision) {
+        const dataArray = sliceTileMap(layer_collision.data, layer_collision.height, layer_collision.width);
+        return [dataArray, layer_collision.height, layer_collision.width];
+    }
+    else {
+        console.error(`Layer with name ${type} not found in the JSON data.`);
+        return [[], 0, 0];
+    }
+}
 
 async function getJSONData() {
     const response = await fetch('/Tiled/MyPortfolioWorld.json');

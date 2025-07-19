@@ -13,6 +13,7 @@ const TileState = Object.freeze({
 export class Tile extends GameObject{
     constructor(x, y, tileWidth, tileHeight, code=0) {
         super(x, y);
+        this.id = null;
         this.transform.pivot = Transform.Pivot.TOP_LEFT;
         // tileCode는 getTileCode 메서드를 사용해 설정
         this.tileCode = this.getTileCode(code);

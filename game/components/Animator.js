@@ -20,7 +20,7 @@ class Animator {
     setAnimation(key) {
         const newAnimation = this.getAnimation(key);
         this.currentAnimation = newAnimation;
-        this.spriteRenderer.changeImg(this.currentAnimation.spriteSheet); // 🔥 즉시 반영
+        this.spriteRenderer.changeImg(this.currentAnimation.spriteSheet);
     }
 
     update(timestamp) {
