@@ -3,8 +3,10 @@ import Player from "/game/objects/Player.js";
 import { Tile, EventTile } from "/game/components/Tile.js";
 import SpriteRenderer from "/game/components/SpriteRenderer.js";
 import GameObject from "/game/components/GameObject.js";
+import Text from "/game/components/Text.js";
 import { getTilemapData } from "/Data/collisionTileData.js";
 import TileEvents from "/Data/portfolioTextData.js";
+
 
 class Scene1 extends Scene {
     constructor(camera) {
@@ -33,6 +35,10 @@ class Scene1 extends Scene {
         this.tileEvents = new TileEvents();
         this.tileEvents.setPlayer(player);
 
+
+        // 테스트 텍스트 출력
+        this.testText = new Text("Hello, World!", -50, 0, "10px Arial", "#000000ff");
+        this.uiObjects.push(this.testText);
     }
 
 

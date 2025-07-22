@@ -95,6 +95,17 @@ class Camera extends GameObject {
             this.ctx.drawImage(img, sx, sy, sWidth, sHeight, drawX, drawY, drawWidth, drawHeight);
         }
     }
+
+    displayText(text, x, y, font = "1px Arial",  color = "black") { 
+        this.ctx.save();
+        this.ctx.translate((x - this.cameraX) * this.scale, (y - this.cameraY) * this.scale);
+        this.ctx.scale(this.scale, this.scale);
+
+        this.ctx.font = font;
+        this.ctx.fillStyle = color;
+        this.ctx.fillText(text, 0, 0);
+        this.ctx.restore();
+    }
     
     drawCollisionBox(rect, color = "red") {
         const drawX = (rect.x - this.cameraX) * this.scale;

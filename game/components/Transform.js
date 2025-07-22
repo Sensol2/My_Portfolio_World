@@ -14,6 +14,10 @@ class Transform {
         this.x = x;
         this.y = y;
     }
+
+    getTransform() {
+        return { x: this.x, y: this.y };
+    }
 }
 
 export default Transform;

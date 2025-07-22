@@ -29,6 +29,7 @@ class GameManager {
         
         SceneManager.update(timestamp);
         SceneManager.render(this.camera);
+        SceneManager.drawUI(this.camera);
         this.inputManager.update();
         requestAnimationFrame((t) => this.loop(t));
     }

@@ -1,8 +1,8 @@
 const iframe = document.querySelector('iframe');
+// TODO: 하드코딩된거 수정하기 반드시
 class TileEvents {
 	constructor() {
         // var testFrame = this.framePreload("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180e5a6d7ce4f8162c97a");
-
 
         this.player = null;
 		this.eventDataDict = {
@@ -40,7 +40,12 @@ class TileEvents {
             "4": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478"); },
 
             // 도전K-스타트업
-            "5": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695"); },
+            "5": () => {
+                const { x, y } = this.player.transform.getTransform();
+                const textImg = 
+
+                this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695"); 
+            },
             "6": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695"); },
 
             // 국방 스타트업 챌린지
@@ -121,36 +126,6 @@ class TileEvents {
 		};
 
 	}
-
-    // framePreload = function (url) {
-    //     var container = document.createElement("div");
-
-    //     container.style.overflow = "hidden";
-    //     container.style.position = "fixed";
-    //     container.style.pointerEvents = "none";
-    //     container.style.opacity = 0;
-    //     container.style.zIndex = -1;
-    //     container.style.willChange = "transform";
-
-    //     document.body.appendChild(container);
-
-    //     const frame = document.createElement("iframe");
-    //     frame.src = url;
-    //     frame.width = "100%";
-    //     frame.height = "575";
-    //     frame.frameBorder = "0";
-    //     frame.allowFullscreen = true;
-    //     // frame.style.display = "none";  // 백그라운드 로딩용
-
-    //     //document.body.appendChild(frame); // 화면 밖에서 미리 로드
-    //     //this.preloadedFrames[url] = frame;
-    //     return frame;
-    // };
-
-    // replaceFrame(frame) {
-    //     const iframe = document.querySelector("iframe");
-    //     iframe.parentNode.replaceChild(frame, iframe);
-    // }
 
     updateIframe(src) {
         const iframe = document.querySelector("iframe");

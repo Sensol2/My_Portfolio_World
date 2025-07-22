@@ -13,5 +13,8 @@ class SceneManager {
     render(camera) {
         this.currentScene?.render(camera);
     }
+    drawUI(camera) {
+        this.currentScene?.drawUI(camera);
+    }
 }
 export default new SceneManager();
