@@ -46,6 +46,7 @@ class Player extends GameObject {
         this.offset = {offX: -5, offY: -8};
 
         this.tiles = [];
+        this.currentBoundingTiles = new Set()
         this.rect = this.addComponent(new Collider(x, y, 10, 14))
         this.updateBound();
 
@@ -132,7 +133,22 @@ class Player extends GameObject {
                 }
                 if (tile.tileCode === "EVENT") {
                     if (rectangularCollision({ rect1: this.rect, rect2: tile.rect })) {
-                        tile.triggerEnter();
+                        // STAY
+                        if (this.currentBoundingTiles.has(tile)) { 
+                            // STAY
+                        }
+                        // ENTER
+                        else {
+                            tile.triggerEnter();
+                            this.currentBoundingTiles.add(tile);
+                        }
+                    }
+                    else {
+                        // EXIT
+                        if (this.currentBoundingTiles.has(tile)) {
+                            tile.triggerExit();
+                            this.currentBoundingTiles.delete(tile);
+                        }
                     }
                 }
             }

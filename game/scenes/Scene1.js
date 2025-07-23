@@ -34,6 +34,7 @@ class Scene1 extends Scene {
         // 이벤트 정의
         this.tileEvents = new TileEvents();
         this.tileEvents.setPlayer(player);
+        this.tileEvents.setUIObjects(this.uiObjects);
 
 
         // 테스트 텍스트 출력
@@ -83,7 +84,12 @@ class Scene1 extends Scene {
 
                 tile.setCallback("onEnter", () => {
                     console.log("EventTile entered / tile id is", tile.id);
-                    this.tileEvents.eventDataDict[tile.id]?.();
+                    this.tileEvents.onEnterEvent(tile.id);
+                });
+
+                tile.setCallback("onExit", () => {
+                    console.log("EventTile exited / tile id is", tile.id);
+                    this.tileEvents.onExitEvent(tile.id);
                 });
 
                 this.objects.push(tile);

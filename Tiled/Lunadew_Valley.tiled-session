@@ -73,11 +73,11 @@
             }
         },
         "Lunadew_Valley.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 11,
+            "scale": 3,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1100.6666666666665,
-                "y": 1003.3333333333333
+                "x": 938.3333333333333,
+                "y": 1014.3333333333333
             }
         },
         "Museum.tsx": {

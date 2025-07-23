@@ -1,131 +1,64 @@
+import { getJSONData } from "/Data/util.js";
+import Text from "/game/components/Text.js";
+
 const iframe = document.querySelector('iframe');
 // TODO: 하드코딩된거 수정하기 반드시
 class TileEvents {
 	constructor() {
         // var testFrame = this.framePreload("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180e5a6d7ce4f8162c97a");
-
         this.player = null;
-		this.eventDataDict = {
-			"11": () => {
-                if (this.player) {
-                    this.player.transform.setTransform(-80, 500);
+        this.uiObjects = null;
+        this.eventMap = new Map();
+        this.getEventJSONData();
+    }
+
+    onEnterEvent(id) {
+        const currentEvents = this.eventMap.get(id);
+        for (let currentEvent of currentEvents) {
+            switch (currentEvent.type) {
+                case "set-player-transform": {
+                    const x = currentEvent.x;
+                    const y = currentEvent.y;
+
+                    this.player.transform.setTransform(x, y);
+                    break;
                 }
-			},
-
-            // 42, 43 : 박물관 -> 지하실
-			"40": () => {
-                if (this.player) {
-                    this.player.transform.setTransform(-80, 510);
+                case "update-iframe": {
+                    const url = currentEvent.url;
+                    this.updateIframe(url);
+                    // TODO - update iframe.
+                    break;
                 }
-			},
-			"41": () => {
-                if (this.player) {
-                    this.player.transform.setTransform(-80, 510);
+                case "show-popup-text-to-player": {
+                    console.log("show-popup-text-to-player event triggered");
+                    const text = currentEvent.text;
+                    const popupText = new Text(text, this.player.transform.x, this.player.transform.y + -20, "5px Arial", "#000000ff");
+                    this.uiObjects.push(popupText);
+                    // TODO - show popup text to player.
+                    break;
                 }
-			},
-            // 50, 51 : 지하실 -> 박물관
-            "48": () => {
-                if (this.player) {
-                    this.player.transform.setTransform(-80, 130);
-                }
-			},
-			"49": () => {
-                if (this.player) {
-                    this.player.transform.setTransform(-80, 130);
-                }
-			},
+            }
+        }
+    }
 
-            // 공군창업경진대회
-            "3": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478"); },
-            "4": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478"); },
+    onExitEvent(id) {
+        this.uiObjects.length = 0;
+    }
 
-            // 도전K-스타트업
-            "5": () => {
-                const { x, y } = this.player.transform.getTransform();
-                const textImg = 
-
-                this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695"); 
-            },
-            "6": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695"); },
-
-            // 국방 스타트업 챌린지
-            "7": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd618030be94ced358c2658a"); },
-            "8": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd618030be94ced358c2658a"); },
-
-            // IF 해커톤
-            "12": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180ac9b8fcdcd2a007121"); },
-            "13": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180ac9b8fcdcd2a007121"); },
-
-            // 창공
-            "14": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180f49fa8fb3b8b68c80c"); },
-            "15": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180f49fa8fb3b8b68c80c"); },
-
-            // OTHON
-            "16": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618060aebdc4c7a04ce403"); },
-            "17": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618060aebdc4c7a04ce403"); },
-
-            // ASK 2022
-            "18": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618029b2c4f4e4462a07bf"); },
-            "19": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618029b2c4f4e4462a07bf"); },
-
-            // 정보처리기능사
-            "20": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180e5a6d7ce4f8162c97a"); },
-            "21": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180e5a6d7ce4f8162c97a"); },
-
-            // 정보처리기사
-            "22": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618052839cea428c50ec3d"); },
-            "23": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618052839cea428c50ec3d"); },
-
-            // 정보기술자격
-            "24": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd61808286e0c38e7eb31275"); },
-            "25": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd61808286e0c38e7eb31275"); },
-
-            // Adobe Certified Associate (ACA)
-            "26": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618063a6add58590382672"); },
-            "27": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/2310be5efd618063a6add58590382672"); },
-
-            // 코이
-            "28": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/7b33ef4d7f5b4c59af90740998d2c5da"); },
-            "29": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/7b33ef4d7f5b4c59af90740998d2c5da"); },
-            "30": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/7b33ef4d7f5b4c59af90740998d2c5da"); },
-
-            // 네덜란드 게임잼
-            "31": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/268f0f540a034c49aaa2e0ce16d1d2f5"); },
-            "32": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/268f0f540a034c49aaa2e0ce16d1d2f5"); },
-            "33": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/268f0f540a034c49aaa2e0ce16d1d2f5"); },
-
-            // 하이톤
-            "34": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/b6d9269fde474ddda67c5005aae6e3ec"); },
-            "35": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/b6d9269fde474ddda67c5005aae6e3ec"); },
-            "36": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/b6d9269fde474ddda67c5005aae6e3ec"); },
-
-            // 스토브 온라인 게임잼
-            "37": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1211d50f40a744cbb8495d82b857f2a4"); },
-            "38": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1211d50f40a744cbb8495d82b857f2a4"); },
-            "39": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1211d50f40a744cbb8495d82b857f2a4"); },
-
-            // 겜마루
-            "42": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/5888dc99932d44ec8f9fb2cf04559cbe"); },
-            "43": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/5888dc99932d44ec8f9fb2cf04559cbe"); },
-            "44": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/5888dc99932d44ec8f9fb2cf04559cbe"); },
-
-            // 스마게 인디게임 장학팀
-            "45": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802daf4ec0afe9eb97e2"); },
-            "46": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802daf4ec0afe9eb97e2"); },
-            "47": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802daf4ec0afe9eb97e2"); },
-
-            // Version UP
-            "50": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/902731fb399444f5ae4046b6a5747507"); },
-
-            // 콜라비트
-            "51": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/b591e8ab51de4c94839e07ec9914504f"); },
-
-            // Merge Neko
-            "52": () => { this.updateIframe("https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802b8328d8ba65792216"); }
-
-		};
-
-	}
+    async getEventJSONData() { 
+        const jsonData = await getJSONData('/Data/eventData.json');
+        console.log(jsonData);
+        for (let tileEvent of jsonData.tileEvents) {
+            if (this.eventMap.has(tileEvent.id)) { 
+                const event = this.eventMap.get(tileEvent.id);
+                const newEvent = [...event, tileEvent];
+                this.eventMap.set(tileEvent.id, newEvent);
+            }
+            else {
+                this.eventMap.set(tileEvent.id, [tileEvent]);
+            }
+        }
+    }
 
     updateIframe(src) {
         const iframe = document.querySelector("iframe");
@@ -154,6 +87,10 @@ class TileEvents {
 
     setPlayer(player) {
         this.player = player;
+    }
+
+    setUIObjects(uiObjects) {
+        this.uiObjects = uiObjects;
     }
 }
 
