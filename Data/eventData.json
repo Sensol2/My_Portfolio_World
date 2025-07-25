@@ -1,0 +1,107 @@
+{
+  "tileEvents": [
+    { "id": 3,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478" },
+    { "id": 3, "type": "show-popup-text-to-player", "text": "공군창업경진대회", "x": -163, "y": -120 },
+    { "id": 4,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478" },
+    { "id": 4, "type": "show-popup-text-to-player", "text": "공군창업경진대회", "x": -163, "y": -120 },
+    { "id": 5,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695" },
+    { "id": 5, "type": "show-popup-text-to-player", "text": "도전 K-STARTUP", "x": -100, "y": -120 },
+    { "id": 6,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd61801aa951c1f94898e695" },
+    { "id": 6, "type": "show-popup-text-to-player", "text": "도전 K-STARTUP", "x": -100, "y": -120 },
+    { "id": 7,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd618030be94ced358c2658a" },
+    { "id": 7, "type": "show-popup-text-to-player", "text": "국방스타트업챌린지", "x": -37, "y": -120 },
+    { "id": 8,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd618030be94ced358c2658a" },
+    { "id": 8, "type": "show-popup-text-to-player", "text": "국방스타트업챌린지", "x": -37, "y": -120 },
+
+
+
+    { "id": 18, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180ac9b8fcdcd2a007121" },
+    { "id": 18, "type": "show-popup-text-to-player", "text": "2018 IF해커톤", "x": -255, "y": 0 },
+    { "id": 19, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180ac9b8fcdcd2a007121" },
+    { "id": 19, "type": "show-popup-text-to-player", "text": "2018 IF해커톤", "x": -255, "y": 0 },
+    { "id": 20, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180f49fa8fb3b8b68c80c" },
+    { "id": 20, "type": "show-popup-text-to-player", "text": "창의적공학설계", "x": -226, "y": 0 },
+    { "id": 21, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180f49fa8fb3b8b68c80c" },
+    { "id": 21, "type": "show-popup-text-to-player", "text": "창의적공학설계", "x": -226, "y": 0 },
+    { "id": 22, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618060aebdc4c7a04ce403" },
+    { "id": 22, "type": "show-popup-text-to-player", "text": "2020 OTHON", "x": -192, "y": 0 },
+    { "id": 23, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618060aebdc4c7a04ce403" },
+    { "id": 23, "type": "show-popup-text-to-player", "text": "2020 OTHON", "x": -192, "y": 0 },
+    { "id": 24, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618029b2c4f4e4462a07bf" },
+    { "id": 24, "type": "show-popup-text-to-player", "text": "ASK 2022", "x": -156, "y": 0 },
+    { "id": 25, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618029b2c4f4e4462a07bf" },
+    { "id": 25, "type": "show-popup-text-to-player", "text": "ASK 2022", "x": -156, "y": 0 },
+    { "id": 26, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180e5a6d7ce4f8162c97a" },
+    { "id": 26, "type": "show-popup-text-to-player", "text": "정보처리기능사", "x": -33, "y": 0 },
+    { "id": 27, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180e5a6d7ce4f8162c97a" },
+    { "id": 27, "type": "show-popup-text-to-player", "text": "정보처리기능사", "x": -33, "y": 0 },
+    { "id": 28, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618052839cea428c50ec3d" },
+    { "id": 28, "type": "show-popup-text-to-player", "text": "정보처리기사", "x": 2, "y": 0 },
+    { "id": 29, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618052839cea428c50ec3d" },
+    { "id": 29, "type": "show-popup-text-to-player", "text": "정보처리기사", "x": 2, "y": 0 },
+    { "id": 30, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd61808286e0c38e7eb31275" },
+    { "id": 30, "type": "show-popup-text-to-player", "text": "ITQ", "x": 42.5, "y": 0 },
+    { "id": 31, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd61808286e0c38e7eb31275" },
+    { "id": 31, "type": "show-popup-text-to-player", "text": "ITQ", "x": 42.5, "y": 0 },
+    { "id": 32, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618063a6add58590382672" },
+    { "id": 32, "type": "show-popup-text-to-player", "text": "ACA", "x": 73.5, "y": 0 },
+    { "id": 33, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd618063a6add58590382672" },
+    { "id": 33, "type": "show-popup-text-to-player", "text": "ACA", "x": 73.5, "y": 0 },
+
+
+    { "id": 12, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/7b33ef4d7f5b4c59af90740998d2c5da" },
+    { "id": 13, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/7b33ef4d7f5b4c59af90740998d2c5da" },
+    { "id": 13, "type": "show-popup-text-to-player", "text": "코이 동아리", "x": 156, "y": -14 },
+    { "id": 14, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/7b33ef4d7f5b4c59af90740998d2c5da" },
+    
+    
+    
+    
+    { "id": 15, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/268f0f540a034c49aaa2e0ce16d1d2f5" },
+    { "id": 16, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/268f0f540a034c49aaa2e0ce16d1d2f5" },
+    { "id": 16, "type": "show-popup-text-to-player", "text": "Netherlands Applied Game Jam", "x": 196, "y": -14 },    
+    { "id": 17, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/268f0f540a034c49aaa2e0ce16d1d2f5" },
+    
+    { "id": 34, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/b6d9269fde474ddda67c5005aae6e3ec" },
+    { "id": 35, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/b6d9269fde474ddda67c5005aae6e3ec" },
+    { "id": 35, "type": "show-popup-text-to-player", "text": "2020 하이톤", "x": 156, "y": 50 },    
+    { "id": 36, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/b6d9269fde474ddda67c5005aae6e3ec" },
+    
+    { "id": 37, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1211d50f40a744cbb8495d82b857f2a4" },
+    { "id": 38, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1211d50f40a744cbb8495d82b857f2a4" },
+    { "id": 38, "type": "show-popup-text-to-player", "text": "스토브 온라인 게임잼", "x": 210, "y": 50 },    
+    { "id": 39, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1211d50f40a744cbb8495d82b857f2a4" },
+    
+    
+    { "id": 40, "type": "set-player-transform", "x": -80, "y": 510 },
+    { "id": 41, "type": "set-player-transform", "x": -80, "y": 510 },
+    
+    { "id": 42, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/5888dc99932d44ec8f9fb2cf04559cbe" },
+    { "id": 43, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/5888dc99932d44ec8f9fb2cf04559cbe" },
+    { "id": 43, "type": "show-popup-text-to-player", "text": "겜마루 게임제작 동아리", "x": 144, "y": 114 },    
+    { "id": 44, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/5888dc99932d44ec8f9fb2cf04559cbe" },
+    
+    { "id": 45, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802daf4ec0afe9eb97e2" },
+    { "id": 46, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802daf4ec0afe9eb97e2" },
+    { "id": 46, "type": "show-popup-text-to-player", "text": "인디게임 장학팀", "x": 215, "y": 114 },    
+    { "id": 47, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802daf4ec0afe9eb97e2" },
+    
+    
+    
+    { "id": 48, "type": "set-player-transform", "x": -80, "y": 130 },
+    { "id": 49, "type": "set-player-transform", "x": -80, "y": 130 },
+    { "id": 50, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/902731fb399444f5ae4046b6a5747507" },
+    { "id": 50, "type": "show-popup-text-to-player", "text": "Version UP!", "x": -180, "y": 492 },    
+
+    { "id": 51, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/b591e8ab51de4c94839e07ec9914504f" },
+    { "id": 51, "type": "show-popup-text-to-player", "text": "콜라비트", "x": -145, "y": 492 },  
+    
+    { "id": 52, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd61802b8328d8ba65792216" },
+    { "id": 52, "type": "show-popup-text-to-player", "text": "Merge Neko", "x": -117, "y": 492 },
+
+    { "id": 53, "type": "update-iframe", "url": "https://sensol2.tistory.com/" },
+    { "id": 54, "type": "update-iframe", "url": "https://sensol2.tistory.com/" },
+    { "id": 54, "type": "show-popup-text-to-player", "text": "개인 블로그", "x": -36, "y": 500 },
+    { "id": 55, "type": "update-iframe", "url": "https://sensol2.tistory.com/" }
+  ]
+}

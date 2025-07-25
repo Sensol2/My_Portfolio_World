@@ -1,0 +1,140 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Lunadew_Valley.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "14_Basement.tsx": {
+            "scaleInDock": 1.5
+        },
+        "17_Visibile_Upstairs_System.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "18_Jail.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "1_Generic.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "26_Condominium.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 3
+        },
+        "2_LivingRoom.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "3_Bathroom.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "4_Bedroom.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "5_Classroom_and_library.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "6_Music_and_sport.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "7_Art.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "8_Gym.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Lunadew_Valley..js": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 425,
+                "y": 355
+            }
+        },
+        "Lunadew_Valley.tiled-tmx.tmx": {
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 349.5,
+                "y": 322.5
+            }
+        },
+        "Lunadew_Valley.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 1113,
+                "y": 946
+            }
+        },
+        "Museum.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Room_Builder.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "spr_tileset_sunnysideworld_16px.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "spr_tileset_sunnysideworld_forest_32px.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "tileset_sunnysideworld_16px.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "코이동아리.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 16
+        }
+    },
+    "last.exportedFilePath": "C:/Users/hhncn/OneDrive/Documents/GitHub/Javascript_WebGame/Tiled",
+    "last.externalTilesetPath": "C:/Users/hhncn/OneDrive/Documents/GitHub/Javascript_WebGame/Tiled",
+    "last.imagePath": "C:/Users/hhncn/OneDrive/바탕 화면",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "Lunadew_Valley.tmx"
+    ],
+    "project": "Lunadew_Valley.tiled-project",
+    "recentFiles": [
+        "Lunadew_Valley.tmx",
+        "spr_tileset_sunnysideworld_16px.tsx",
+        "코이동아리.tsx",
+        "18_Jail.tsx",
+        "26_Condominium.tsx",
+        "17_Visibile_Upstairs_System.tsx",
+        "Room_Builder.tsx",
+        "6_Music_and_sport.tsx",
+        "7_Art.tsx",
+        "8_Gym.tsx",
+        "5_Classroom_and_library.tsx",
+        "1_Generic.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

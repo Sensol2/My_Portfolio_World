@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+    <title>한재상의 포트폴리오</title>
+    <!-- 깃허브 배포를 위해 base url을 리포지터리 이름으로 설정 -->
+    <base href="/My_Portfolio_World/">
+    <style>
+        iframe {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        iframe.fade-out {
+            opacity: 0;
+        }
+
+        iframe.fade-in {
+            opacity: 1;
+        }
+    </style>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <div style="display: flex; flex-direction: row; align-items: flex-start;">
+        <div id="game-container"></div>
+        <div id="description" style="margin-left: 24px; border-left: 1px solid #ccc; padding-left: 16px;">
+        </div>
+        <iframe src="https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180769e0edf45ce27f606" width="100%" height="575" frameborder="0" loading="lazy" allowfullscreen />
+    </div>
+</body>
+</html>
