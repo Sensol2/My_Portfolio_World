@@ -96,7 +96,7 @@ class Camera extends GameObject {
     this.ctx.restore();
   }
 
-  displayText(text, x, y, font = "1px Arial", color = "black") {
+  displayText(text, x, y, font = "1px Times New Roman", color = "black") {
     this.ctx.save();
 
     this.ctx.scale(this.scale, this.scale);

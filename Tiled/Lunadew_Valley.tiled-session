@@ -21,7 +21,7 @@
             "scaleInEditor": 1
         },
         "1_Generic.tsx": {
-            "scaleInDock": 3,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "26_Condominium.tsx": {
@@ -73,20 +73,20 @@
             }
         },
         "Lunadew_Valley.tmx": {
-            "scale": 3,
-            "selectedLayer": 6,
+            "scale": 1.5,
+            "selectedLayer": 10,
             "viewCenter": {
-                "x": 938.3333333333333,
-                "y": 1014.3333333333333
+                "x": 1113,
+                "y": 946
             }
         },
         "Museum.tsx": {
-            "scaleInDock": 3,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "Room_Builder.tsx": {
             "dynamicWrapping": false,
-            "scaleInDock": 1.5,
+            "scaleInDock": 3,
             "scaleInEditor": 1
         },
         "spr_tileset_sunnysideworld_16px.tsx": {
@@ -115,15 +115,13 @@
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "openFiles": [
-        "Lunadew_Valley.tmx",
-        "spr_tileset_sunnysideworld_16px.tsx",
-        "코이동아리.tsx"
+        "Lunadew_Valley.tmx"
     ],
     "project": "Lunadew_Valley.tiled-project",
     "recentFiles": [
-        "코이동아리.tsx",
-        "spr_tileset_sunnysideworld_16px.tsx",
         "Lunadew_Valley.tmx",
+        "spr_tileset_sunnysideworld_16px.tsx",
+        "코이동아리.tsx",
         "18_Jail.tsx",
         "26_Condominium.tsx",
         "17_Visibile_Upstairs_System.tsx",

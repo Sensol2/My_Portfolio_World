@@ -12,7 +12,7 @@ class Scene {
   render(camera) {
     for (let obj of this.objects) {
       obj.render?.(camera);
-      obj.drawDebug?.(camera);
+      //obj.drawDebug?.(camera);
     }
   }
   drawUI(camera) {

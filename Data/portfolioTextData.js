@@ -9,32 +9,29 @@ class TileEvents {
         this.player = null;
         this.uiObjects = null;
         this.eventMap = new Map();
+        this.usingPopupTexts = new Map();
         this.getEventJSONData();
     }
 
     onEnterEvent(id) {
         const currentEvents = this.eventMap.get(id);
+        if (!currentEvents) return;
         for (let currentEvent of currentEvents) {
             switch (currentEvent.type) {
                 case "set-player-transform": {
-                    const x = currentEvent.x;
-                    const y = currentEvent.y;
-
-                    this.player.transform.setTransform(x, y);
+                    this.player.transform.setTransform(currentEvent.x, currentEvent.y);
                     break;
                 }
                 case "update-iframe": {
-                    const url = currentEvent.url;
-                    this.updateIframe(url);
-                    // TODO - update iframe.
+                    this.updateIframe(currentEvent.url);
                     break;
                 }
                 case "show-popup-text-to-player": {
-                    console.log("show-popup-text-to-player event triggered");
-                    const text = currentEvent.text;
-                    const popupText = new Text(text, this.player.transform.x, this.player.transform.y + -20, "5px Arial", "#000000ff");
-                    this.uiObjects.push(popupText);
-                    // TODO - show popup text to player.
+                    const popupText = new Text(currentEvent.text, currentEvent.x, currentEvent.y, "5px Arial", "#000000ff");
+                    if (this.uiObjects.length <= 0) {
+                        this.uiObjects.push(popupText);
+                        this.usingPopupTexts.set(id, popupText)
+                    }
                     break;
                 }
             }
@@ -42,7 +39,12 @@ class TileEvents {
     }
 
     onExitEvent(id) {
-        this.uiObjects.length = 0;
+        if (this.usingPopupTexts.has(id)) {
+            const popupText = this.usingPopupTexts.get(id);
+            this.uiObjects.splice(this.uiObjects.indexOf(popupText), 1);
+
+            this.usingPopupTexts.delete(id);
+        }
     }
 
     async getEventJSONData() { 

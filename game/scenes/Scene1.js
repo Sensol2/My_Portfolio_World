@@ -38,8 +38,8 @@ class Scene1 extends Scene {
 
 
         // 테스트 텍스트 출력
-        this.testText = new Text("Hello, World!", -50, 0, "10px Arial", "#000000ff");
-        this.uiObjects.push(this.testText);
+        // this.testText = new Text("Hello, World!", -50, 0, "10px Arial", "#000000ff");
+        // this.uiObjects.push(this.testText);
     }
 
 
