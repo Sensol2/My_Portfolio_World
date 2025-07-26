@@ -1,2 +1,3 @@
 # GraphicAssets 폴더 전체 무시
 GraphicAssets/
+node_modules/
