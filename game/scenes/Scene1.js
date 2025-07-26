@@ -18,7 +18,7 @@ class Scene1 extends Scene {
     init() {
         // BG 추가
         const bg = new GameObject(-5, 5);
-        bg.addComponent(new SpriteRenderer("../../Assets/Map/MyPortfolioWorld_BG.png"));
+        bg.addComponent(new SpriteRenderer("./Assets/Map/MyPortfolioWorld_BG.png"));
         this.objects.push(bg);
 
         // 플레이어 추가
