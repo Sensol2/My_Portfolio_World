@@ -1,10 +1,10 @@
 import GameObject from "../components/GameObject.js";
-import SpriteRenderer from "/game/components/SpriteRenderer.js";
-import Animation from "/game/components/Animation.js";
-import Animator from "/game/components/Animator.js";
-import InputManager from "/game/core/InputManager.js";
-import Collider from "/game/components/Collider.js";
-import { rectangularCollision } from "/game/components/Collider.js";
+import SpriteRenderer from "../components/SpriteRenderer.js";
+import Animation from "../components/Animation.js";
+import Animator from "../components/Animator.js";
+import InputManager from "../core/InputManager.js";
+import Collider from "../components/Collider.js";
+import { rectangularCollision } from "../components/Collider.js";
 
 // 플레이어 STATE 정의. FSM 패턴 사용
 const PlayerState = Object.freeze({
@@ -32,14 +32,14 @@ class Player extends GameObject {
         this.inputManager.setCallback("KEY_UP", () => { this.stop(); });
 
         //그래픽 관련 컴포넌트 정의
-        this.spriteRenderer = this.addComponent(new SpriteRenderer("/Assets/Characters/Human/WALKING/base_walk_LEFT.png"));
+        this.spriteRenderer = this.addComponent(new SpriteRenderer("../../Assets/Characters/Human/WALKING/base_walk_LEFT.png"));
         this.animator = this.addComponent(new Animator(this.spriteRenderer));
         this.animator.addAnimation(
-            new Animation("IDLE_LEFT", "/Assets/Characters/Human/IDLE/base_idle_LEFT.png", 9, 100),
-            new Animation("IDLE_RIGHT", "/Assets/Characters/Human/IDLE/base_idle_RIGHT.png", 9, 100),
-            new Animation("WALK_LEFT", "/Assets/Characters/Human/WALKING/base_walk_LEFT.png", 8, 100),
-            new Animation("WALK_RIGHT", "/Assets/Characters/Human/WALKING/base_walk_RIGHT.png", 8, 100),
-            new Animation("ATTACKING", "/Assets/Characters/Human/ATTACK/base_attack_strip10.png", 10, 100),
+            new Animation("IDLE_LEFT", "../../Assets/Characters/Human/IDLE/base_idle_LEFT.png", 9, 100),
+            new Animation("IDLE_RIGHT", "../../Assets/Characters/Human/IDLE/base_idle_RIGHT.png", 9, 100),
+            new Animation("WALK_LEFT", "../../Assets/Characters/Human/WALKING/base_walk_LEFT.png", 8, 100),
+            new Animation("WALK_RIGHT", "../../Assets/Characters/Human/WALKING/base_walk_RIGHT.png", 8, 100),
+            new Animation("ATTACKING", "../../Assets/Characters/Human/ATTACK/base_attack_strip10.png", 10, 100),
         );
         this.animator.setAnimation("IDLE_RIGHT");
 

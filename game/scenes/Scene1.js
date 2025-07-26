@@ -1,11 +1,12 @@
-import Scene from "/game/core/Scene.js";
-import Player from "/game/objects/Player.js";
-import { Tile, EventTile } from "/game/components/Tile.js";
-import SpriteRenderer from "/game/components/SpriteRenderer.js";
-import GameObject from "/game/components/GameObject.js";
-import Text from "/game/components/Text.js";
-import { getTilemapData } from "/Data/collisionTileData.js";
-import TileEvents from "/Data/portfolioTextData.js";
+import Scene from "../core/Scene.js";
+import Player from "../objects/Player.js";
+import { Tile, EventTile } from "../components/Tile.js";
+import SpriteRenderer from "../components/SpriteRenderer.js";
+import GameObject from "../components/GameObject.js";
+import Text from "../components/Text.js";
+import { getTilemapData } from "../../Data/collisionTileData.js";
+import TileEvents from "../../Data/portfolioTextData.js";
+
 
 
 class Scene1 extends Scene {
@@ -17,7 +18,7 @@ class Scene1 extends Scene {
     init() {
         // BG 추가
         const bg = new GameObject(-5, 5);
-        bg.addComponent(new SpriteRenderer("/Assets/Map/MyPortfolioWorld_BG.png"));
+        bg.addComponent(new SpriteRenderer("../../Assets/Map/MyPortfolioWorld_BG.png"));
         this.objects.push(bg);
 
         // 플레이어 추가

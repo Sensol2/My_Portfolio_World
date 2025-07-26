@@ -1,6 +1,6 @@
-import Transform from "/game/components/Transform.js";
-import SpriteRenderer from "/game/components/SpriteRenderer.js";
-import MonoBehaviour from "/game/core/MonoBehaviour.js";
+import Transform from "./Transform.js";
+import SpriteRenderer from "./SpriteRenderer.js";
+import MonoBehaviour from "../core/MonoBehaviour.js";
 
 /* 
 ==== gameObject.js =====

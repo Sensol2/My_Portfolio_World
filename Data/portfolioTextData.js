@@ -1,5 +1,5 @@
-import { getJSONData } from "/Data/util.js";
-import Text from "/game/components/Text.js";
+import { getJSONData } from "./util.js";
+import Text from "../game/components/Text.js";
 
 const iframe = document.querySelector('iframe');
 // TODO: 하드코딩된거 수정하기 반드시
@@ -48,7 +48,7 @@ class TileEvents {
     }
 
     async getEventJSONData() { 
-        const jsonData = await getJSONData('/Data/eventData.json');
+        const jsonData = await getJSONData('./Data/eventData.json');
         console.log(jsonData);
         for (let tileEvent of jsonData.tileEvents) {
             if (this.eventMap.has(tileEvent.id)) { 

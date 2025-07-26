@@ -1,6 +1,6 @@
 import GameObject from "../components/GameObject.js";
-import InputManager from "/game/core/InputManager.js";
-import elt from "/game/utils/elt.js";
+import InputManager from "./InputManager.js";
+import elt from "../utils/elt.js";
 /* 
 ==== camera.js =====
 화면 렌더링, 카메라 이동 등 View 를 책임지고 관리하는 역할의 파일이다.

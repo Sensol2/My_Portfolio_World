@@ -1,4 +1,4 @@
-import MonoBehaviour from "/game/core/MonoBehaviour.js";
+import MonoBehaviour from "./MonoBehaviour.js";
 
 class InputManager extends MonoBehaviour {
     static instance = null;

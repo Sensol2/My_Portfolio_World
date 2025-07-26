@@ -1,7 +1,7 @@
-import Collider from "/game/components/Collider.js";
-import GameObject from "/game/components/GameObject.js";
-import SpriteRenderer from "/game/components/SpriteRenderer.js";
-import Transform from "/game/components/Transform.js";
+import Collider from "./Collider.js";
+import GameObject from "./GameObject.js";
+import SpriteRenderer from "./SpriteRenderer.js";
+import Transform from "./Transform.js";
 
 // TileState 객체를 활성화하여 타일 상태를 관리
 const TileState = Object.freeze({

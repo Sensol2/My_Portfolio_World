@@ -1,4 +1,4 @@
-import GameManager from "/game/core/GameManager.js";
+import GameManager from "./game/core/GameManager.js";
 
 const parent = document.getElementById("parent");
 

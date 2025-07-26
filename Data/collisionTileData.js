@@ -1,4 +1,4 @@
-import { getJSONData } from "/Data/util.js";
+import { getJSONData } from "./util.js";
 
 let collisionTileData = [];
 let eventTileData = [];
@@ -15,7 +15,7 @@ export function sliceTileMap(tileData, height, width) {
 } 
 
 export async function getTilemapData(type) {
-    const jsonData = await getJSONData('/Tiled/MyPortfolioWorld.json');
+    const jsonData = await getJSONData('./Tiled/MyPortfolioWorld.json');
     const layer_collision = jsonData.layers.find(layer => layer.name === type);
     if (layer_collision) {
         const dataArray = sliceTileMap(layer_collision.data, layer_collision.height, layer_collision.width);

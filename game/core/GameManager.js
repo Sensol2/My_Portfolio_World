@@ -1,7 +1,7 @@
-import Camera from "/game/core/Camera.js";
-import InputManager from "/game/core/InputManager.js";
-import SceneManager from "/game/core/SceneManager.js";
-import Scene1 from "/game/scenes/Scene1.js";
+import Camera from "./Camera.js";
+import InputManager from "./InputManager.js";
+import SceneManager from "./SceneManager.js";
+import Scene1 from "../scenes/Scene1.js";
 
 
 class GameManager {
