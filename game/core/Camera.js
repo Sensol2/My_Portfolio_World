@@ -23,6 +23,7 @@ class Camera extends GameObject {
     this.cameraX = cameraX;
     this.cameraY = cameraY;
     this.scale = _scale;
+    this.targetScale = _scale;
 
     // 타겟 오브젝트 관련
     this.target = null;
@@ -41,8 +42,7 @@ class Camera extends GameObject {
     // 화면 중앙에 타겟 고정 (lerp로 부드럽게 이동)
     if (this.target) {
       const targetX = this.target.transform.x - CANVAS_WIDTH / (2 * this.scale);
-      const targetY =
-        this.target.transform.y - CANVAS_HEIGHT / (2 * this.scale);
+      const targetY = this.target.transform.y - CANVAS_HEIGHT / (2 * this.scale);
 
       // t 값(0~1, 값이 작을수록 더 천천히 따라감)
       const smoothness = t;
@@ -50,9 +50,15 @@ class Camera extends GameObject {
       this.cameraY = this.lerp(this.cameraY, targetY, smoothness);
     }
   }
-
+  
   update() {
-    this.moveCameraDoTarget(0.08);
+    this.scale = this.lerp(this.scale, this.targetScale, 0.1);
+    if (Math.abs(this.scale - this.targetScale) > 0.001) { // 줌인/줌아웃 중일때
+      this.moveCameraDoTarget(1);
+    }
+    else {
+      this.moveCameraDoTarget(0.08);
+    }
   }
 
   setTarget(target) {
@@ -129,13 +135,13 @@ class Camera extends GameObject {
   }
 
   zoomIn() {
-    this.scale += 0.1;
-    this.moveCameraDoTarget(1);
+    if (this.targetScale >= 3) return; // 최대 스케일 제한
+    this.targetScale += 0.1;
   }
 
   zoomOut() {
-    this.scale -= 0.1;
-    this.moveCameraDoTarget(1);
+    if (this.targetScale <= 0.9) return; // 최소 스케일 제한
+    this.targetScale -= 0.1;
   }
 }
 

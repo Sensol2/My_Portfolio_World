@@ -29,6 +29,10 @@ class Player extends GameObject {
         this.inputManager.setCallback("ArrowRight", () => this.move(1, 0));
         this.inputManager.setCallback("ArrowUp", () => this.move(0, -1));
         this.inputManager.setCallback("ArrowDown", () => this.move(0, 1));
+        this.inputManager.setCallback("w", () => this.move(0, -1));
+        this.inputManager.setCallback("a", () => this.move(-1, 0));
+        this.inputManager.setCallback("s", () => this.move(0, 1));
+        this.inputManager.setCallback("d", () => this.move(1, 0));
         this.inputManager.setCallback("KEY_UP", () => { this.stop(); });
 
         //그래픽 관련 컴포넌트 정의

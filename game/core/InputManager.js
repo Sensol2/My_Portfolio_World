@@ -23,6 +23,10 @@ class InputManager extends MonoBehaviour {
             "ArrowRight": null,
             "ArrowUp": null,
             "ArrowDown": null,
+            "w": null,
+            "a": null,
+            "s": null,
+            "d": null,
             "WHEEL_UP": null,
             "WHEEL_DOWN": null,
         };
