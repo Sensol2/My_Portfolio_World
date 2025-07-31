@@ -2,11 +2,69 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>한재상의 포트폴리오</title>
     <!-- 깃허브 배포를 위해 base url을 리포지터리 이름으로 설정 -->
     <base href="/My_Portfolio_World/">
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100dvh;
+            overflow: hidden;
+            touch-action: none; /* 터치 스크롤 방지 */
+        }
+        
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100dvh;
+        }
+        
+        /* 데스크톱은 좌우분할 */
+        @media (min-width: 769px) {
+            .container {
+                flex-direction: row;
+            }
+            
+            #game-container {
+                width: 50vw;
+                height: 100dvh;
+            }
+            
+            #iframe-container {
+                width: 50vw;
+                height: 100dvh;
+            }
+        }
+        
+        /* 모바일은 상하분할 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            #game-container {
+                width: 100vw;
+                height: 50dvh;
+                min-height: 200px;
+            }
+            
+            #iframe-container {
+                width: 100vw;
+                height: 50dvh;
+                min-height: 200px;
+            }
+        }
+
+        /* 모바일에서 스크롤 방지 */
+        #game-container, #iframe-container {
+            overflow: hidden;
+        }
+
         iframe {
+            width: 100%;
+            height: 100%;
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
         }
@@ -18,16 +76,17 @@
         iframe.fade-in {
             opacity: 1;
         }
+
     </style>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <script type="module" src="./index.js"></script>
 </head>
 <body>
-    <div style="display: flex; flex-direction: row; align-items: flex-start;">
+    <div class="container">
         <div id="game-container"></div>
-        <div id="description" style="margin-left: 24px; border-left: 1px solid #ccc; padding-left: 16px;">
+        <div id="iframe-container">
+            <iframe id="portfolio-iframe" src="https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180769e0edf45ce27f606" loading="lazy" allowfullscreen></iframe>
         </div>
-        <iframe src="https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180769e0edf45ce27f606" width="100%" height="575" frameborder="0" loading="lazy" allowfullscreen />
     </div>
 </body>
 </html>

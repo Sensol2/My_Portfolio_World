@@ -63,7 +63,11 @@ class TileEvents {
     }
 
     updateIframe(src) {
-        const iframe = document.querySelector("iframe");
+        const iframe = document.getElementById("portfolio-iframe");
+        if (!iframe) {
+            console.error("portfolio-iframe을 찾을 수 없습니다.");
+            return;
+        }
 
         // 이미 동일한 링크면 생략
         if (iframe.dataset.currentSrc === src) return;

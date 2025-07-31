@@ -7,9 +7,6 @@ import elt from "../utils/elt.js";
 canvas를 생성하는 등 책임 범위가 크다. 확장 시 주의하도록 하자.
 */
 
-const CANVAS_WIDTH = 1024;
-const CANVAS_HEIGHT = 576;
-
 class Camera extends GameObject {
   constructor(cameraX = 0, cameraY = 0, _scale = 1) {
     super(cameraX, cameraY);
@@ -41,8 +38,8 @@ class Camera extends GameObject {
   moveCameraDoTarget(t) {
     // 화면 중앙에 타겟 고정 (lerp로 부드럽게 이동)
     if (this.target) {
-      const targetX = this.target.transform.x - CANVAS_WIDTH / (2 * this.scale);
-      const targetY = this.target.transform.y - CANVAS_HEIGHT / (2 * this.scale);
+      const targetX = this.target.transform.x - this.canvas.width / (2 * this.scale);
+      const targetY = this.target.transform.y - this.canvas.height / (2 * this.scale);
 
       // t 값(0~1, 값이 작을수록 더 천천히 따라감)
       const smoothness = t;
@@ -68,10 +65,24 @@ class Camera extends GameObject {
 
   // 캔버스와 컨텍스트 초기화
   createCanvas() {
+    const gameContainer = document.getElementById("game-container");
+    if (!gameContainer) {
+      console.error("game-container를 찾을 수 없습니다.");
+      return null;
+    }
+
+    // 컨테이너 크기에 맞게 canvas 크기 설정
+    const containerWidth = gameContainer.clientWidth || window.innerWidth / 2;
+    const containerHeight = gameContainer.clientHeight || window.innerHeight;
+
     const canvas = elt("canvas", {
-      width: CANVAS_WIDTH,
-      height: CANVAS_HEIGHT,
+      width: containerWidth,
+      height: containerHeight,
     });
+    
+    canvas.style.display = "block";
+    canvas.style.margin = "0";
+    
     if (!canvas.getContext) {
       console.error("Canvas context가 지원되지 않습니다.");
       return null;
@@ -80,6 +91,22 @@ class Camera extends GameObject {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "rgb(0,0,0)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // 창 크기 변경 시 canvas 크기 업데이트
+    const updateCanvasSize = () => {
+      const newWidth = gameContainer.clientWidth;
+      const newHeight = gameContainer.clientHeight;
+      
+      if (newWidth && newHeight) {
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        // canvas 크기 변경 시 검은 배경 다시 그리기
+        ctx.fillStyle = "rgb(0,0,0)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    };
+
+    window.addEventListener("resize", updateCanvasSize);
 
     this.canvas = canvas;
     this.ctx = ctx;
