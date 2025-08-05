@@ -57,7 +57,7 @@ class Player extends GameObject {
     }
 
     update(timestamp) {
-        this.animator.update(timestamp);
+        super.update(timestamp);
         this.updateAnimation();
     }
 

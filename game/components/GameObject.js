@@ -1,6 +1,7 @@
 import Transform from "./Transform.js";
 import SpriteRenderer from "./SpriteRenderer.js";
 import MonoBehaviour from "../core/MonoBehaviour.js";
+import Animator from "./Animator.js";
 
 /* 
 ==== gameObject.js =====
@@ -25,7 +26,13 @@ class GameObject extends MonoBehaviour {
         return this.components.get(componentClass.name);
     }
 
-    update() {
+    update(timestamp) {
+        // 재생할 애니메이션이 있는 경우 재생
+        const animator = this.getComponent(Animator);
+        if (animator) {
+            animator.update(timestamp);
+        }
+
         return
     }
 

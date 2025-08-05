@@ -6,6 +6,8 @@ import GameObject from "../components/GameObject.js";
 import Text from "../components/Text.js";
 import { getTilemapData } from "../../Data/collisionTileData.js";
 import TileEvents from "../../Data/portfolioTextData.js";
+import Animator from "../components/Animator.js";
+import Animation from "../components/Animation.js";
 
 
 
@@ -25,6 +27,15 @@ class Scene1 extends Scene {
         const player = new Player(-80, 50);
         this.objects.push(player);
         this.camera.setTarget(player);
+
+        // 애니메이션 ui 추가
+        const arrow_ui = new GameObject(-80, 150);
+        const arrow_ui_renderer = arrow_ui.addComponent(new SpriteRenderer("./Assets/Animated_UI/Arrow_Down.png"));
+        
+        const arrow_ui_animator = arrow_ui.addComponent(new Animator(arrow_ui_renderer))
+        arrow_ui_animator.addAnimation(new Animation("IDLE", "./Assets/Animated_UI/Arrow_Down.png", 6, 100))
+        arrow_ui_animator.setAnimation("IDLE");
+        this.objects.push(arrow_ui);
 
         // 벽 타일 추가
         this.initWallTiles(player);
