@@ -1,5 +1,8 @@
 {
   "tileEvents": [
+    { "id": 0, "type": "set-player-transform", "x": -80, "y": 50 },
+    { "id": 1, "type": "set-player-transform", "x": -80, "y": 50 },
+    { "id": 2, "type": "show-popup-text-to-player", "text": "Hello World!", "x": -85, "y": -640 },
     { "id": 3,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478" },
     { "id": 3, "type": "show-popup-text-to-player", "text": "공군창업경진대회", "x": -163, "y": -120 },
     { "id": 4,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180e69a86e7916b693478" },
@@ -12,7 +15,13 @@
     { "id": 7, "type": "show-popup-text-to-player", "text": "국방스타트업챌린지", "x": -37, "y": -120 },
     { "id": 8,  "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd618030be94ced358c2658a" },
     { "id": 8, "type": "show-popup-text-to-player", "text": "국방스타트업챌린지", "x": -37, "y": -120 },
+    
+    
 
+    
+
+    { "id": 9, "type": "set-player-transform", "x": -75, "y": -570 },
+    { "id": 10, "type": "set-player-transform", "x": -75, "y": -570 },
 
 
     { "id": 18, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/2310be5efd6180ac9b8fcdcd2a007121" },
@@ -102,6 +111,21 @@
     { "id": 53, "type": "update-iframe", "url": "https://sensol2.tistory.com/" },
     { "id": 54, "type": "update-iframe", "url": "https://sensol2.tistory.com/" },
     { "id": 54, "type": "show-popup-text-to-player", "text": "개인 블로그", "x": -36, "y": 500 },
-    { "id": 55, "type": "update-iframe", "url": "https://sensol2.tistory.com/" }
+    { "id": 55, "type": "update-iframe", "url": "https://sensol2.tistory.com/" },
+
+    { "id": 56, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/93fae5100f084db7b45e4adfb02574fd" },
+    { "id": 56, "type": "show-popup-text-to-player", "text": "Philosopher's Stone", "x": -200, "y": 550 },
+    { "id": 57, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/93fae5100f084db7b45e4adfb02574fd" },
+    { "id": 57, "type": "show-popup-text-to-player", "text": "Philosopher's Stone", "x": -200, "y": 550 },
+
+    { "id": 58, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/cfb51ef9989e4aff811ee55eac6f3c30" },
+    { "id": 58, "type": "show-popup-text-to-player", "text": "Airpocalpyse", "x": -160, "y": 550 },
+    { "id": 59, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/cfb51ef9989e4aff811ee55eac6f3c30" },
+    { "id": 59, "type": "show-popup-text-to-player", "text": "Airpocalpyse", "x": -160, "y": 550 },
+
+    { "id": 60, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180cca8d4fd6eae3b3861" },
+    { "id": 60, "type": "show-popup-text-to-player", "text": "FLICK", "x": -120, "y": 550 },
+    { "id": 61, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180cca8d4fd6eae3b3861" },
+    { "id": 61, "type": "show-popup-text-to-player", "text": "FLICK", "x": -120, "y": 550 }
   ]
 }

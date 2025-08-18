@@ -10,10 +10,11 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "14_Basement.tsx": {
-            "scaleInDock": 1.5
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
         },
         "17_Visibile_Upstairs_System.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "18_Jail.tsx": {
@@ -25,11 +26,11 @@
             "scaleInEditor": 1
         },
         "26_Condominium.tsx": {
-            "scaleInDock": 0.5,
+            "scaleInDock": 1.5,
             "scaleInEditor": 3
         },
         "2_LivingRoom.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "3_Bathroom.tsx": {
@@ -45,7 +46,7 @@
             "scaleInEditor": 1
         },
         "6_Music_and_sport.tsx": {
-            "scaleInDock": 3,
+            "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "7_Art.tsx": {
@@ -53,7 +54,7 @@
             "scaleInEditor": 1
         },
         "8_Gym.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
         "Lunadew_Valley..js": {
@@ -73,16 +74,24 @@
             }
         },
         "Lunadew_Valley.tmx": {
-            "scale": 3,
-            "selectedLayer": 12,
+            "scale": 1.5,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 1105.1666666666665,
-                "y": 1509.3333333333333
+                "x": 1056.3333333333333,
+                "y": 1372
             }
         },
         "Museum.tsx": {
             "scaleInDock": 1.5,
             "scaleInEditor": 1
+        },
+        "MyPortfolioWorld.json": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1195.5,
+                "y": 964
+            }
         },
         "Room_Builder.tsx": {
             "dynamicWrapping": false,
@@ -90,7 +99,7 @@
             "scaleInEditor": 1
         },
         "spr_tileset_sunnysideworld_16px.tsx": {
-            "scaleInDock": 3,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "spr_tileset_sunnysideworld_forest_32px.tsx": {
@@ -107,30 +116,36 @@
             "scaleInEditor": 16
         }
     },
-    "last.exportedFilePath": "C:/Users/hhncn/OneDrive/Documents/GitHub/Javascript_WebGame/Tiled",
+    "last.exportedFilePath": "C:/Users/hhncn/Documents/GitHub/Javascript_WebGame/Tiled",
     "last.externalTilesetPath": "C:/Users/hhncn/OneDrive/Documents/GitHub/Javascript_WebGame/Tiled",
-    "last.imagePath": "C:/Users/hhncn/OneDrive/바탕 화면",
+    "last.imagePath": "C:/Users/hhncn/Documents/GitHub/Javascript_WebGame/Tiled/Tilemap_Asset/moderninteriors-win/1_Interiors/16x16",
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "openFiles": [
-        "Lunadew_Valley.tmx"
+        "Lunadew_Valley.tmx",
+        "14_Basement.tsx",
+        "5_Classroom_and_library.tsx",
+        "6_Music_and_sport.tsx",
+        "8_Gym.tsx",
+        "7_Art.tsx",
+        "Room_Builder.tsx"
     ],
     "project": "Lunadew_Valley.tiled-project",
     "recentFiles": [
-        "Lunadew_Valley.tmx",
-        "spr_tileset_sunnysideworld_16px.tsx",
-        "코이동아리.tsx",
-        "18_Jail.tsx",
-        "26_Condominium.tsx",
-        "17_Visibile_Upstairs_System.tsx",
         "Room_Builder.tsx",
-        "6_Music_and_sport.tsx",
         "7_Art.tsx",
         "8_Gym.tsx",
+        "6_Music_and_sport.tsx",
         "5_Classroom_and_library.tsx",
-        "1_Generic.tsx"
+        "14_Basement.tsx",
+        "Lunadew_Valley.tmx",
+        "17_Visibile_Upstairs_System.tsx",
+        "18_Jail.tsx",
+        "2_LivingRoom.tsx",
+        "Museum.tsx",
+        "26_Condominium.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

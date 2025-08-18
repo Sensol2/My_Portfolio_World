@@ -1,3 +1,4 @@
 # GraphicAssets 폴더 전체 무시
 GraphicAssets/
 node_modules/
+Tiled/Tilemap_Asset/

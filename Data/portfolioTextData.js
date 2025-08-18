@@ -42,7 +42,6 @@ class TileEvents {
         if (this.usingPopupTexts.has(id)) {
             const popupText = this.usingPopupTexts.get(id);
             this.uiObjects.splice(this.uiObjects.indexOf(popupText), 1);
-
             this.usingPopupTexts.delete(id);
         }
     }
