@@ -67,6 +67,7 @@ class Camera extends GameObject {
   // 캔버스와 컨텍스트 초기화
   createCanvas() {
     const gameContainer = document.getElementById("game-container");
+
     if (!gameContainer) {
       console.error("game-container를 찾을 수 없습니다.");
       return null;
