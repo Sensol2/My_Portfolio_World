@@ -126,6 +126,6 @@
     { "id": 60, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180cca8d4fd6eae3b3861" },
     { "id": 60, "type": "show-popup-text-to-player", "text": "FLICK", "x": -120, "y": 550 },
     { "id": 61, "type": "update-iframe", "url": "https://denim-euphonium-b60.notion.site/ebd/1860be5efd6180cca8d4fd6eae3b3861" },
-    { "id": 61, "type": "show-popup-text-to-player", "text": "FLICK", "x": -120, "y": 550 }
+    { "id": 61, "type": "show-popup-text-to-player", "text": "FLICK ", "x": -120, "y": 550 }
   ]
 }

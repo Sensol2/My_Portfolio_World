@@ -25,6 +25,7 @@ class Player extends GameObject {
         
         //이동 관련 함수 정의
         this.inputManager = InputManager.getInstance();
+        this.inputManager.setCallback("MOUSE_DOWN", (worldX, worldY) => this.moveByMouse(worldX, worldY));
         this.inputManager.setCallback("ArrowLeft", () => this.move(-1, 0));
         this.inputManager.setCallback("ArrowRight", () => this.move(1, 0));
         this.inputManager.setCallback("ArrowUp", () => this.move(0, -1));
@@ -34,6 +35,7 @@ class Player extends GameObject {
         this.inputManager.setCallback("s", () => this.move(0, 1));
         this.inputManager.setCallback("d", () => this.move(1, 0));
         this.inputManager.setCallback("KEY_UP", () => { this.stop(); });
+
 
         //그래픽 관련 컴포넌트 정의
         this.spriteRenderer = this.addComponent(new SpriteRenderer("./Assets/Characters/Human/WALKING/base_walk_LEFT.png"));
@@ -105,7 +107,22 @@ class Player extends GameObject {
         if (this.rect) camera.drawCollisionBox(this.rect, "red");
     }
 
-    //메소드 오버라이딩
+
+    moveByMouse(targetX, targetY) { 
+        console.log(targetX, targetY);
+        // 1) 방향 벡터 계산
+        const dx = targetX - this.transform.x;
+        const dy = targetY - this.transform.y;
+
+        // 단위 벡터로 정규화
+        const length = Math.sqrt(dx**2 + dy**2);
+        const dirX = dx / length;
+        const dirY = dy / length;
+
+        this.move(dirX*this.speed_x, dirY*this.speed_y);
+    }
+
+    // 메소드 오버라이딩
     move(dx, dy) {
         if (dx < 0)
             this.changeState(PlayerState.WALKING_LEFT);

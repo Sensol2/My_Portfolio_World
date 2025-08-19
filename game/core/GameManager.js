@@ -5,9 +5,17 @@ import Scene1 from "../scenes/Scene1.js";
 
 
 class GameManager {
+    static instance = null;
     constructor() {
+        // 게임매니저 싱글턴으로 관리
+        if (GameManager.instance) {
+            return GameManager.instance;
+        }
+
+        GameManager.instance = this;
+
         this.camera = new Camera();
-        this.inputManager = InputManager.getInstance(); // 싱글턴으로 한 번만
+        this.inputManager = InputManager.getInstance();
     }
 
     init() {

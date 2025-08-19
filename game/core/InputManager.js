@@ -1,3 +1,4 @@
+import GameManager from "./GameManager.js";
 import MonoBehaviour from "./MonoBehaviour.js";
 
 class InputManager extends MonoBehaviour {
@@ -14,6 +15,11 @@ class InputManager extends MonoBehaviour {
         InputManager.instance = this;
 
         this.keyPressed = new Set();
+        this.isMouseDown = false;
+        this.isTouchDown = false;
+
+        this.mouseX = null;
+        this.mouseY = null;
 
         // 방향키 눌릴때 실행할 함수 매핑
         // KEY_UP: 어떤 키든 KeyUp 이벤트 발생 시 실행, 플레이어 정지 상태 판정을 위해 사용
@@ -29,11 +35,20 @@ class InputManager extends MonoBehaviour {
             "d": null,
             "WHEEL_UP": null,
             "WHEEL_DOWN": null,
+            "MOUSE_DOWN": null,
         };
 
         window.addEventListener("keydown", (event) => this.onKeyDown(event));
         window.addEventListener("keyup", (event) => this.onKeyUp(event));
         window.addEventListener("wheel", (event) => this.onWheel(event));
+        window.addEventListener("mousedown", (event) => this.onMouseDown(event));
+        window.addEventListener("mouseup", (event) => this.onMouseUp(event));
+        window.addEventListener("mousemove", (event) => this.onMouseMove(event));
+        window.addEventListener("touchstart", (event) => this.onTouchStart(event));
+        window.addEventListener("touchend", (event) => this.onTouchEnd(event));
+        window.addEventListener("touchcancel", (event) => this.onTouchCancel(event));
+        window.addEventListener("touchmove", (event) => this.onTouchMove(event));
+
     }
 
     static getInstance() {
@@ -56,6 +71,10 @@ class InputManager extends MonoBehaviour {
                 this.callbacks[key](); // 계속 등록된 콜백 함수 실행
             }
         });
+
+        if (this.isMouseDown || this.isTouchDown) {
+            this.callbacks["MOUSE_DOWN"](this.mouseX, this.mouseY);
+        }
     }
 
     onKeyDown(event) {
@@ -67,6 +86,20 @@ class InputManager extends MonoBehaviour {
         this.callbacks["KEY_UP"]();
     }
 
+    // 마우스 입력 처리
+    onMouseDown(event) {
+        this.isMouseDown = true;
+    }
+
+    onMouseUp(event) {
+        this.isMouseDown = false;
+    }
+
+    onMouseMove(event) {
+        const camera = GameManager.instance.camera;
+        [this.mouseX, this.mouseY] = camera.getClientToWorld(event.clientX, event.clientY);
+    }
+
     onWheel(event) {
         if (event.deltaY > 0 && this.callbacks["WHEEL_DOWN"]) {
             this.callbacks["WHEEL_DOWN"]();
@@ -75,6 +108,34 @@ class InputManager extends MonoBehaviour {
             this.callbacks["WHEEL_UP"]();
         }
     }
+
+
+    // 터치 관련
+
+    onTouchStart(event) { 
+        this.isTouchDown = true;
+        const touches = event.changedTouches;
+
+        const camera = GameManager.instance.camera;
+        [this.mouseX, this.mouseY] = camera.getClientToWorld(touches[0].clientX, touches[0].clientY);
+    }
+
+    onTouchMove(event) {
+        const touches = event.changedTouches;
+
+        const camera = GameManager.instance.camera;
+        [this.mouseX, this.mouseY] = camera.getClientToWorld(touches[0].clientX, touches[0].clientY);
+    }
+
+    onTouchEnd(event) {
+        this.isTouchDown = false;
+    }
+
+    onTouchCancel(event) {
+        this.isTouchDown = false;
+    }
+
+
 }
 
 export default InputManager;

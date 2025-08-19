@@ -31,8 +31,14 @@ class Camera extends GameObject {
     this.inputManager.setCallback("WHEEL_DOWN", () => this.zoomOut());
   }
 
-  lerp(start, end, t) {
-    return start + (end - start) * t;
+  update() {
+    this.scale = this.lerp(this.scale, this.targetScale, 0.1);
+    if (Math.abs(this.scale - this.targetScale) > 0.001) { // 줌인/줌아웃 중일때
+      this.moveCameraDoTarget(1);
+    }
+    else {
+      this.moveCameraDoTarget(0.08);
+    }
   }
 
   moveCameraDoTarget(t) {
@@ -48,16 +54,11 @@ class Camera extends GameObject {
     }
   }
   
-  update() {
-    this.scale = this.lerp(this.scale, this.targetScale, 0.1);
-    if (Math.abs(this.scale - this.targetScale) > 0.001) { // 줌인/줌아웃 중일때
-      this.moveCameraDoTarget(1);
-    }
-    else {
-      this.moveCameraDoTarget(0.08);
-    }
+  lerp(start, end, t) {
+    return start + (end - start) * t;
   }
 
+  // 카메라 중앙에 놓을 타겟 설정하기
   setTarget(target) {
     this.target = target;
     this.moveCameraDoTarget(1);
@@ -107,7 +108,7 @@ class Camera extends GameObject {
     };
 
     window.addEventListener("resize", updateCanvasSize);
-
+    canvas.addEventListener("contextmenu", (e) => e.preventDefault()); // 우클릭 방지
     this.canvas = canvas;
     this.ctx = ctx;
     return [canvas, ctx];
@@ -170,6 +171,27 @@ class Camera extends GameObject {
     if (this.targetScale <= 0.9) return; // 최소 스케일 제한
     this.targetScale -= 0.1;
   }
+
+  // 클라이언트 좌표를 캔버스 스크린 좌표로 변환
+  getClientToScreen(_x, _y) {
+    const rect = this.canvas.getBoundingClientRect();
+    const x = (_x - rect.left) * this.scale;
+    const y = (_y - rect.top) * this.scale;
+    return [x, y];
+  }
+
+  // 스크린 좌표를 월드 좌표로 변환
+  getScreenToWorld(_x, _y) {
+    const x = _x / this.scale + this.cameraX;
+    const y = _y / this.scale + this.cameraY;
+    return [x, y];
+  }
+
+  getClientToWorld(_x, _y) {
+    const [screenX, screenY] = this.getClientToScreen(_x, _y);
+    return this.getScreenToWorld(screenX, screenY);
+  }
+
 }
 
 export default Camera;
