@@ -113,10 +113,8 @@ class InputManager extends MonoBehaviour {
     // 터치 관련
 
     onTouchStart(event) { 
-        document.documentElement.requestFullscreen();
         this.isTouchDown = true;
         const touches = event.changedTouches;
-
         const camera = GameManager.instance.camera;
         [this.mouseX, this.mouseY] = camera.getClientToWorld(touches[0].clientX, touches[0].clientY);
     }
