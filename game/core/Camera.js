@@ -108,7 +108,9 @@ class Camera extends GameObject {
     };
 
     window.addEventListener("resize", updateCanvasSize);
+    document.addEventListener("contextmenu", (e) => e.preventDefault()); // 우클릭 방지
     canvas.addEventListener("contextmenu", (e) => e.preventDefault()); // 우클릭 방지
+
     this.canvas = canvas;
     this.ctx = ctx;
     return [canvas, ctx];
@@ -175,8 +177,8 @@ class Camera extends GameObject {
   // 클라이언트 좌표를 캔버스 스크린 좌표로 변환
   getClientToScreen(_x, _y) {
     const rect = this.canvas.getBoundingClientRect();
-    const x = (_x - rect.left) * this.scale;
-    const y = (_y - rect.top) * this.scale;
+    const x = (_x - rect.left);
+    const y = (_y - rect.top);
     return [x, y];
   }
 
