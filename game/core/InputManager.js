@@ -14,6 +14,7 @@ class InputManager extends MonoBehaviour {
 
         InputManager.instance = this;
 
+        this.canvas = document.getElementById("game-canvas");
         this.keyPressed = new Set();
         this.isMouseDown = false;
         this.isTouchDown = false;
@@ -44,11 +45,10 @@ class InputManager extends MonoBehaviour {
         window.addEventListener("mousedown", (event) => this.onMouseDown(event));
         window.addEventListener("mouseup", (event) => this.onMouseUp(event));
         window.addEventListener("mousemove", (event) => this.onMouseMove(event));
-        window.addEventListener("touchstart", (event) => this.onTouchStart(event));
-        window.addEventListener("touchend", (event) => this.onTouchEnd(event));
-        window.addEventListener("touchcancel", (event) => this.onTouchCancel(event));
-        window.addEventListener("touchmove", (event) => this.onTouchMove(event));
-
+        this.canvas.addEventListener("touchstart", (event) => this.onTouchStart(event));
+        this.canvas.addEventListener("touchend", (event) => this.onTouchEnd(event));
+        this.canvas.addEventListener("touchcancel", (event) => this.onTouchCancel(event));
+        this.canvas.addEventListener("touchmove", (event) => this.onTouchMove(event));
     }
 
     static getInstance() {

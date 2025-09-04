@@ -1,6 +1,5 @@
 import GameObject from "../components/GameObject.js";
 import InputManager from "./InputManager.js";
-import elt from "../utils/elt.js";
 /* 
 ==== camera.js =====
 화면 렌더링, 카메라 이동 등 View 를 책임지고 관리하는 역할의 파일이다.
@@ -12,9 +11,7 @@ class Camera extends GameObject {
     super(cameraX, cameraY);
 
     // 캔버스 관련
-    const [canvas, ctx] = this.createCanvas();
-    this.canvas = canvas;
-    this.ctx = ctx;
+    this.createCanvas();
 
     // 카메라 좌표, 스케일 설정
     this.cameraX = cameraX;
@@ -67,9 +64,15 @@ class Camera extends GameObject {
   // 캔버스와 컨텍스트 초기화
   createCanvas() {
     const gameContainer = document.getElementById("game-container");
+    const canvas = document.getElementById("game-canvas");
 
     if (!gameContainer) {
       console.error("game-container를 찾을 수 없습니다.");
+      return null;
+    }
+
+    if (!canvas) {
+      console.error("game-canvas를 찾을 수 없습니다.");
       return null;
     }
 
@@ -77,13 +80,8 @@ class Camera extends GameObject {
     const containerWidth = gameContainer.clientWidth || window.innerWidth / 2;
     const containerHeight = gameContainer.clientHeight || window.innerHeight;
 
-    const canvas = elt("canvas", {
-      width: containerWidth,
-      height: containerHeight,
-    });
-    
-    canvas.style.display = "block";
-    canvas.style.margin = "0";
+    canvas.width = containerWidth;
+    canvas.height = containerHeight;
     
     if (!canvas.getContext) {
       console.error("Canvas context가 지원되지 않습니다.");
@@ -114,11 +112,6 @@ class Camera extends GameObject {
 
     this.canvas = canvas;
     this.ctx = ctx;
-    return [canvas, ctx];
-  }
-
-  getCanvas() {
-    return [this.canvas, this.ctx];
   }
 
   displayImage(img, x, y, sx = null, sy = null, sWidth = null, sHeight = null) {

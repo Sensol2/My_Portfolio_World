@@ -20,11 +20,12 @@ class GameManager {
 
     init() {
         const container = document.getElementById("game-container");
-        const [canvas, ctx] = this.camera.getCanvas();
+        this.canvas = document.getElementById("game-canvas");
+        this.ctx = this.canvas.getContext("2d");
 
-        if (!canvas || !ctx) return;
+        if (!this.canvas || !this.ctx) return;
 
-        container.appendChild(canvas);
+        container.appendChild(this.canvas);
 
         // 최초 씬 설정
         const gameScene = new Scene1(this.camera);
