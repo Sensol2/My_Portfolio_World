@@ -1,6 +1,7 @@
 # My Portfolio World 🎮
 
-<img width="1914" height="1023" alt="image" src="https://github.com/user-attachments/assets/1d2c17f1-7488-4491-9631-1b9b47487273" />
+<img width="1918" height="1025" alt="image" src="https://github.com/user-attachments/assets/28de5b4d-512a-4305-a387-f6b0b2b28dc5" />
+
 
 **한재상의 인터랙티브 포트폴리오 웹사이트**
 
